@@ -35,6 +35,7 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
         boton4 = new javax.swing.JPanel();
         borde3 = new javax.swing.JPanel();
         labelBoton3 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -225,6 +226,19 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 520));
 
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 760, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 760, 520));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -320,6 +334,7 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel boton3;
     private javax.swing.JPanel boton4;
     private javax.swing.JPanel botonSalir;
+    private javax.swing.JPanel content;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelBoton1;
