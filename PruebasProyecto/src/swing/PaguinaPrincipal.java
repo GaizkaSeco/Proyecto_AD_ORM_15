@@ -19,7 +19,7 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         VentanaPrincipal frame = new VentanaPrincipal();
-        frame.setSize(830,500);
+        frame.setSize(830,550);
         frame.setLocation(0,0);
         
         content.removeAll();
