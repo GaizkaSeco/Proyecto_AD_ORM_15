@@ -4,6 +4,7 @@
  */
 package swing;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import javax.swing.JLabel;
@@ -16,6 +17,15 @@ import javax.swing.JPanel;
 public class PaguinaPrincipal extends javax.swing.JFrame {
     public PaguinaPrincipal() {
         initComponents();
+        
+        VentanaPrincipal frame = new VentanaPrincipal();
+        frame.setSize(830,500);
+        frame.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,17 +34,20 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
 
         panelMenu = new javax.swing.JPanel();
         botonSalir = new javax.swing.JPanel();
-        borde4 = new javax.swing.JPanel();
+        bordeSalir = new javax.swing.JPanel();
         labelBoton1 = new javax.swing.JLabel();
-        boton2 = new javax.swing.JPanel();
+        botonProveedores = new javax.swing.JPanel();
         labelBoton6 = new javax.swing.JLabel();
-        borde1 = new javax.swing.JPanel();
-        boton3 = new javax.swing.JPanel();
-        borde2 = new javax.swing.JPanel();
+        bordeProveedor = new javax.swing.JPanel();
+        botonPiezas = new javax.swing.JPanel();
+        bordePiezas = new javax.swing.JPanel();
         labelBoton2 = new javax.swing.JLabel();
-        boton4 = new javax.swing.JPanel();
-        borde3 = new javax.swing.JPanel();
+        botonAyuda = new javax.swing.JPanel();
+        bordeAyuda = new javax.swing.JPanel();
         labelBoton3 = new javax.swing.JLabel();
+        botonGestion = new javax.swing.JPanel();
+        bordeGestion = new javax.swing.JPanel();
+        labelBoton4 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,32 +64,33 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        borde4.setBackground(new java.awt.Color(114, 70, 124));
-        borde4.setPreferredSize(new java.awt.Dimension(5, 0));
+        bordeSalir.setBackground(new java.awt.Color(114, 70, 124));
+        bordeSalir.setPreferredSize(new java.awt.Dimension(5, 0));
 
-        javax.swing.GroupLayout borde4Layout = new javax.swing.GroupLayout(borde4);
-        borde4.setLayout(borde4Layout);
-        borde4Layout.setHorizontalGroup(
-            borde4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bordeSalirLayout = new javax.swing.GroupLayout(bordeSalir);
+        bordeSalir.setLayout(bordeSalirLayout);
+        bordeSalirLayout.setHorizontalGroup(
+            bordeSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 5, Short.MAX_VALUE)
         );
-        borde4Layout.setVerticalGroup(
-            borde4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bordeSalirLayout.setVerticalGroup(
+            bordeSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        labelBoton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelBoton1.setForeground(new java.awt.Color(0, 0, 0));
-        labelBoton1.setText("Boton1");
+        labelBoton1.setText("Salir");
 
         javax.swing.GroupLayout botonSalirLayout = new javax.swing.GroupLayout(botonSalir);
         botonSalir.setLayout(botonSalirLayout);
         botonSalirLayout.setHorizontalGroup(
             botonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonSalirLayout.createSequentialGroup()
-                .addComponent(borde4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bordeSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
                 .addComponent(labelBoton1)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         botonSalirLayout.setVerticalGroup(
             botonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,193 +98,254 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(labelBoton1)
                 .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(borde4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(bordeSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
 
-        panelMenu.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 200, -1));
+        panelMenu.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 170, -1));
 
-        boton2.setBackground(new java.awt.Color(198, 177, 201));
-        boton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonProveedores.setBackground(new java.awt.Color(198, 177, 201));
+        botonProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                boton2MousePressed(evt);
+                botonProveedoresMousePressed(evt);
             }
         });
 
+        labelBoton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelBoton6.setForeground(new java.awt.Color(0, 0, 0));
-        labelBoton6.setText("Boton1");
+        labelBoton6.setText("Proveedores");
 
-        borde1.setBackground(new java.awt.Color(255, 255, 255));
-        borde1.setPreferredSize(new java.awt.Dimension(5, 0));
+        bordeProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        bordeProveedor.setPreferredSize(new java.awt.Dimension(5, 0));
 
-        javax.swing.GroupLayout borde1Layout = new javax.swing.GroupLayout(borde1);
-        borde1.setLayout(borde1Layout);
-        borde1Layout.setHorizontalGroup(
-            borde1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bordeProveedorLayout = new javax.swing.GroupLayout(bordeProveedor);
+        bordeProveedor.setLayout(bordeProveedorLayout);
+        bordeProveedorLayout.setHorizontalGroup(
+            bordeProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 5, Short.MAX_VALUE)
         );
-        borde1Layout.setVerticalGroup(
-            borde1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bordeProveedorLayout.setVerticalGroup(
+            bordeProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout boton2Layout = new javax.swing.GroupLayout(boton2);
-        boton2.setLayout(boton2Layout);
-        boton2Layout.setHorizontalGroup(
-            boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton2Layout.createSequentialGroup()
-                .addComponent(borde1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+        javax.swing.GroupLayout botonProveedoresLayout = new javax.swing.GroupLayout(botonProveedores);
+        botonProveedores.setLayout(botonProveedoresLayout);
+        botonProveedoresLayout.setHorizontalGroup(
+            botonProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonProveedoresLayout.createSequentialGroup()
+                .addComponent(bordeProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(labelBoton6)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
-        boton2Layout.setVerticalGroup(
-            boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton2Layout.createSequentialGroup()
+        botonProveedoresLayout.setVerticalGroup(
+            botonProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonProveedoresLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(labelBoton6)
                 .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(borde1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(bordeProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
 
-        panelMenu.add(boton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, -1));
+        panelMenu.add(botonProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, -1));
 
-        boton3.setBackground(new java.awt.Color(114, 70, 124));
-        boton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonPiezas.setBackground(new java.awt.Color(114, 70, 124));
+        botonPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                boton3MousePressed(evt);
+                botonPiezasMousePressed(evt);
             }
         });
 
-        borde2.setBackground(new java.awt.Color(114, 70, 124));
-        borde2.setPreferredSize(new java.awt.Dimension(5, 0));
+        bordePiezas.setBackground(new java.awt.Color(114, 70, 124));
+        bordePiezas.setPreferredSize(new java.awt.Dimension(5, 0));
 
-        javax.swing.GroupLayout borde2Layout = new javax.swing.GroupLayout(borde2);
-        borde2.setLayout(borde2Layout);
-        borde2Layout.setHorizontalGroup(
-            borde2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bordePiezasLayout = new javax.swing.GroupLayout(bordePiezas);
+        bordePiezas.setLayout(bordePiezasLayout);
+        bordePiezasLayout.setHorizontalGroup(
+            bordePiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 5, Short.MAX_VALUE)
         );
-        borde2Layout.setVerticalGroup(
-            borde2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        bordePiezasLayout.setVerticalGroup(
+            bordePiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        labelBoton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelBoton2.setForeground(new java.awt.Color(0, 0, 0));
-        labelBoton2.setText("Boton1");
+        labelBoton2.setText("Piezas");
 
-        javax.swing.GroupLayout boton3Layout = new javax.swing.GroupLayout(boton3);
-        boton3.setLayout(boton3Layout);
-        boton3Layout.setHorizontalGroup(
-            boton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton3Layout.createSequentialGroup()
-                .addComponent(borde2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+        javax.swing.GroupLayout botonPiezasLayout = new javax.swing.GroupLayout(botonPiezas);
+        botonPiezas.setLayout(botonPiezasLayout);
+        botonPiezasLayout.setHorizontalGroup(
+            botonPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonPiezasLayout.createSequentialGroup()
+                .addComponent(bordePiezas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(labelBoton2)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
-        boton3Layout.setVerticalGroup(
-            boton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+        botonPiezasLayout.setVerticalGroup(
+            botonPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bordePiezas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(botonPiezasLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addComponent(labelBoton2)
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(borde2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelMenu.add(boton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, -1));
+        panelMenu.add(botonPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 170, -1));
 
-        boton4.setBackground(new java.awt.Color(114, 70, 124));
-        boton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonAyuda.setBackground(new java.awt.Color(114, 70, 124));
+        botonAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                boton4MousePressed(evt);
+                botonAyudaMousePressed(evt);
             }
         });
 
-        borde3.setBackground(new java.awt.Color(114, 70, 124));
-        borde3.setPreferredSize(new java.awt.Dimension(5, 0));
+        bordeAyuda.setBackground(new java.awt.Color(114, 70, 124));
+        bordeAyuda.setPreferredSize(new java.awt.Dimension(5, 0));
 
-        javax.swing.GroupLayout borde3Layout = new javax.swing.GroupLayout(borde3);
-        borde3.setLayout(borde3Layout);
-        borde3Layout.setHorizontalGroup(
-            borde3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bordeAyudaLayout = new javax.swing.GroupLayout(bordeAyuda);
+        bordeAyuda.setLayout(bordeAyudaLayout);
+        bordeAyudaLayout.setHorizontalGroup(
+            bordeAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 5, Short.MAX_VALUE)
         );
-        borde3Layout.setVerticalGroup(
-            borde3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        bordeAyudaLayout.setVerticalGroup(
+            bordeAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        labelBoton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelBoton3.setForeground(new java.awt.Color(0, 0, 0));
-        labelBoton3.setText("Boton1");
+        labelBoton3.setText("Ayuda");
 
-        javax.swing.GroupLayout boton4Layout = new javax.swing.GroupLayout(boton4);
-        boton4.setLayout(boton4Layout);
-        boton4Layout.setHorizontalGroup(
-            boton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton4Layout.createSequentialGroup()
-                .addComponent(borde3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+        javax.swing.GroupLayout botonAyudaLayout = new javax.swing.GroupLayout(botonAyuda);
+        botonAyuda.setLayout(botonAyudaLayout);
+        botonAyudaLayout.setHorizontalGroup(
+            botonAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonAyudaLayout.createSequentialGroup()
+                .addComponent(bordeAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(labelBoton3)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
-        boton4Layout.setVerticalGroup(
-            boton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boton4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+        botonAyudaLayout.setVerticalGroup(
+            botonAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bordeAyuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonAyudaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelBoton3)
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(borde3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
-        panelMenu.add(boton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 200, -1));
+        panelMenu.add(botonAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, -1));
 
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 520));
+        botonGestion.setBackground(new java.awt.Color(114, 70, 124));
+        botonGestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonGestionMousePressed(evt);
+            }
+        });
+
+        bordeGestion.setBackground(new java.awt.Color(114, 70, 124));
+        bordeGestion.setPreferredSize(new java.awt.Dimension(5, 0));
+
+        javax.swing.GroupLayout bordeGestionLayout = new javax.swing.GroupLayout(bordeGestion);
+        bordeGestion.setLayout(bordeGestionLayout);
+        bordeGestionLayout.setHorizontalGroup(
+            bordeGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+        bordeGestionLayout.setVerticalGroup(
+            bordeGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        labelBoton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelBoton4.setForeground(new java.awt.Color(0, 0, 0));
+        labelBoton4.setText("Gestion Global");
+
+        javax.swing.GroupLayout botonGestionLayout = new javax.swing.GroupLayout(botonGestion);
+        botonGestion.setLayout(botonGestionLayout);
+        botonGestionLayout.setHorizontalGroup(
+            botonGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonGestionLayout.createSequentialGroup()
+                .addComponent(bordeGestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelBoton4)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        botonGestionLayout.setVerticalGroup(
+            botonGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bordeGestion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(botonGestionLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(labelBoton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelMenu.add(botonGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, -1));
+
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 550));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGap(0, 830, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 760, 520));
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 830, 550));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     //Accion de los botones para cambiar de color ar clickar etc
-    private void boton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton2MousePressed
-        setColor(boton2, borde1);
-        resetColor(boton3, borde2);
-        resetColor(boton4, borde3);
-        resetColor(botonSalir, borde4);
-    }//GEN-LAST:event_boton2MousePressed
+    private void botonProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonProveedoresMousePressed
+        setColor(botonProveedores, bordeProveedor);
+        resetColor(botonPiezas, bordePiezas);
+        resetColor(botonAyuda, bordeAyuda);
+        resetColor(botonSalir, bordeSalir);
+        resetColor(botonGestion, bordeGestion);
+    }//GEN-LAST:event_botonProveedoresMousePressed
 
-    private void boton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton3MousePressed
-        setColor(boton3, borde2);
-        resetColor(boton2, borde1);
-        resetColor(boton4, borde3);
-        resetColor(botonSalir, borde4);
-    }//GEN-LAST:event_boton3MousePressed
+    private void botonPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPiezasMousePressed
+        setColor(botonPiezas, bordePiezas);
+        resetColor(botonProveedores, bordeProveedor);
+        resetColor(botonAyuda, bordeAyuda);
+        resetColor(botonSalir, bordeSalir);
+        resetColor(botonGestion, bordeGestion);
+    }//GEN-LAST:event_botonPiezasMousePressed
 
-    private void boton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton4MousePressed
-        setColor(boton4, borde3);
-        resetColor(boton3,borde2);
-        resetColor(boton2, borde1);
-        resetColor(botonSalir, borde4);
-    }//GEN-LAST:event_boton4MousePressed
+    private void botonAyudaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAyudaMousePressed
+        setColor(botonAyuda, bordeAyuda);
+        resetColor(botonPiezas,bordePiezas);
+        resetColor(botonProveedores, bordeProveedor);
+        resetColor(botonSalir, bordeSalir);
+        resetColor(botonGestion, bordeGestion);
+    }//GEN-LAST:event_botonAyudaMousePressed
 
     private void botonSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMousePressed
-        setColor(botonSalir, borde4);
-        resetColor(boton3, borde2);
-        resetColor(boton4, borde3);
-        resetColor(boton2, borde1);
+        setColor(botonSalir, bordeSalir);
+        resetColor(botonPiezas, bordePiezas);
+        resetColor(botonAyuda, bordeAyuda);
+        resetColor(botonProveedores, bordeProveedor);
+        resetColor(botonGestion, bordeGestion);
     }//GEN-LAST:event_botonSalirMousePressed
+
+    private void botonGestionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGestionMousePressed
+        setColor(botonGestion, bordeGestion);
+        resetColor(botonPiezas, bordePiezas);
+        resetColor(botonAyuda, bordeAyuda);
+        resetColor(botonProveedores, bordeProveedor);
+        resetColor(botonSalir, bordeSalir);
+    }//GEN-LAST:event_botonGestionMousePressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -306,9 +381,9 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
 
     public PaguinaPrincipal(JPanel boton1, JPanel boton2, JPanel boton3, JPanel boton4, JPanel boton5, JLabel labelBoton1, JLabel labelBoton2, JLabel labelBoton3, JLabel labelBoton4, JLabel labelBoton5, JPanel panelMenu) throws HeadlessException {
         this.botonSalir = boton1;
-        this.boton2 = boton2;
-        this.boton3 = boton3;
-        this.boton4 = boton4;
+        this.botonProveedores = boton2;
+        this.botonPiezas = boton3;
+        this.botonAyuda = boton4;
         this.labelBoton1 = labelBoton1;
         this.labelBoton2 = labelBoton2;
         this.labelBoton3 = labelBoton3;
@@ -326,20 +401,21 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel borde1;
-    private javax.swing.JPanel borde2;
-    private javax.swing.JPanel borde3;
-    private javax.swing.JPanel borde4;
-    private javax.swing.JPanel boton2;
-    private javax.swing.JPanel boton3;
-    private javax.swing.JPanel boton4;
+    private javax.swing.JPanel bordeAyuda;
+    private javax.swing.JPanel bordeGestion;
+    private javax.swing.JPanel bordePiezas;
+    private javax.swing.JPanel bordeProveedor;
+    private javax.swing.JPanel bordeSalir;
+    private javax.swing.JPanel botonAyuda;
+    private javax.swing.JPanel botonGestion;
+    private javax.swing.JPanel botonPiezas;
+    private javax.swing.JPanel botonProveedores;
     private javax.swing.JPanel botonSalir;
     private javax.swing.JPanel content;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelBoton1;
     private javax.swing.JLabel labelBoton2;
     private javax.swing.JLabel labelBoton3;
+    private javax.swing.JLabel labelBoton4;
     private javax.swing.JLabel labelBoton6;
     private javax.swing.JPanel panelMenu;
     // End of variables declaration//GEN-END:variables
