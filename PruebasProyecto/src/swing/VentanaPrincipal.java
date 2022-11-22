@@ -23,7 +23,6 @@ public class VentanaPrincipal extends javax.swing.JPanel {
         GestionProveedores frame = new GestionProveedores();
         frame.setSize(830,490);
         frame.setLocation(0,0);
-        
         content.removeAll();
         content.add(frame, BorderLayout.CENTER);
         content.revalidate();
@@ -141,11 +140,27 @@ public class VentanaPrincipal extends javax.swing.JPanel {
     private void botonGestionProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGestionProveedoresMousePressed
         setColor(botonGestionProveedores);
         resetColor(botonAltas);
+        
+        GestionProveedores frame = new GestionProveedores();
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_botonGestionProveedoresMousePressed
 
     private void botonAltasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAltasMousePressed
         setColor(botonAltas);
         resetColor(botonGestionProveedores);
+        
+        NuevoProveedor frame = new NuevoProveedor();
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_botonAltasMousePressed
 
     private void setColor(JPanel pane) {
