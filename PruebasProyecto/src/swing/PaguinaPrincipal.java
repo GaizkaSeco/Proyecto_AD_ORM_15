@@ -313,6 +313,14 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
         resetColor(botonAyuda, bordeAyuda);
         resetColor(botonSalir, bordeSalir);
         resetColor(botonGestion, bordeGestion);
+        
+        VentanaPrincipal frame = new VentanaPrincipal();
+        frame.setSize(830,550);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_botonProveedoresMousePressed
 
     private void botonPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPiezasMousePressed
@@ -321,6 +329,14 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
         resetColor(botonAyuda, bordeAyuda);
         resetColor(botonSalir, bordeSalir);
         resetColor(botonGestion, bordeGestion);
+        
+        VentanaPiezas frame = new VentanaPiezas();
+        frame.setSize(830,550);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_botonPiezasMousePressed
 
     private void botonAyudaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAyudaMousePressed
@@ -345,6 +361,14 @@ public class PaguinaPrincipal extends javax.swing.JFrame {
         resetColor(botonAyuda, bordeAyuda);
         resetColor(botonProveedores, bordeProveedor);
         resetColor(botonSalir, bordeSalir);
+        
+        VentanaGestionGlobal frame = new VentanaGestionGlobal();
+        frame.setSize(830,550);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_botonGestionMousePressed
 
     public static void main(String args[]) {
