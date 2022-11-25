@@ -8,12 +8,12 @@ package swing;
  *
  * @author 9FDAM09
  */
-public class VentanaPiezas extends javax.swing.JPanel {
+public class PanelGestionPiezas extends javax.swing.JPanel {
 
     /**
      * Creates new form VentanaPiezas
      */
-    public VentanaPiezas() {
+    public PanelGestionPiezas() {
         initComponents();
     }
 
@@ -37,7 +37,7 @@ public class VentanaPiezas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

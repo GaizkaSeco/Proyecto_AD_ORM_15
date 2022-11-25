@@ -8,12 +8,12 @@ package swing;
  *
  * @author 9FDAM09
  */
-public class VentanaGestionGlobal extends javax.swing.JPanel {
+public class PanelGestionGlobal extends javax.swing.JPanel {
 
     /**
      * Creates new form VentanaGestionGlobal
      */
-    public VentanaGestionGlobal() {
+    public PanelGestionGlobal() {
         initComponents();
     }
 
