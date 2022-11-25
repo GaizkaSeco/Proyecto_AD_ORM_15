@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="95" green="69" red="8e" type="rgb"/>
+      <Color blue="f4" green="f4" red="f4" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -68,7 +68,7 @@
                 <Column editable="false" title="Title 1" type="java.lang.Object"/>
                 <Column editable="false" title="Title 2" type="java.lang.Object"/>
                 <Column editable="false" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                <Column editable="false" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -102,7 +102,7 @@
               <Color blue="c9" green="b1" red="c6" type="rgb"/>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>

@@ -4,6 +4,17 @@
  */
 package swing;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import scrollbar.ScrollBarCustom;
+
 /**
  *
  * @author omega
@@ -16,7 +27,11 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
     public PanelGestionProveedores() {
         initComponents();
         
-       
+       jTable1.setShowHorizontalLines(true);
+       jTable1.setGridColor(new Color(230,230,230));
+       jTable1.setRowHeight(30);
+       jScrollPane1.getViewport().setBackground(Color.WHITE);
+       jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
     }
 
     /**
@@ -37,7 +52,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(244, 244, 244));
 
         jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -81,7 +96,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -90,6 +105,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         });
         jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setSelectionBackground(new java.awt.Color(198, 177, 201));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Dar de baja");
@@ -176,7 +192,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
