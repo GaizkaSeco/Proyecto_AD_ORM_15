@@ -10,10 +10,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import scrollbar.ScrollBarCustom;
+import table.TableHeader;
 
 /**
  *
@@ -30,8 +34,28 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
        jTable1.setShowHorizontalLines(true);
        jTable1.setGridColor(new Color(230,230,230));
        jTable1.setRowHeight(30);
+       jTable1.getTableHeader().setReorderingAllowed(true);
+       jTable1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                TableHeader header = new TableHeader(value + "");
+                if(column==4){
+                    header.setHorizontalAlignment(JLabel.CENTER);
+                }
+                return header;
+            }
+       });
        jScrollPane1.getViewport().setBackground(Color.WHITE);
        jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
+       fixtable(jScrollPane1);
+    }
+    
+    public void fixtable(JScrollPane scroll) {
+        scroll.getViewport().setBackground(Color.WHITE);
+        scroll.setVerticalScrollBar(new ScrollBarCustom());
+        JPanel p = new JPanel();
+        scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+        scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
     }
 
     /**
