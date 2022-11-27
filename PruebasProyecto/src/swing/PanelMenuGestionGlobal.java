@@ -37,7 +37,11 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     private void initComponents() {
 
         panelMenuTop = new javax.swing.JPanel();
-        boton = new javax.swing.JPanel();
+        botonRelacionar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        botonSumiProveedores = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        botonSumiPiezas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
 
@@ -45,20 +49,50 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
 
         panelMenuTop.setBackground(new java.awt.Color(114, 70, 124));
 
-        boton.setBackground(new java.awt.Color(198, 177, 201));
+        botonRelacionar.setBackground(new java.awt.Color(198, 177, 201));
 
-        javax.swing.GroupLayout botonLayout = new javax.swing.GroupLayout(boton);
-        boton.setLayout(botonLayout);
-        botonLayout.setHorizontalGroup(
-            botonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html><center>Piezas, Proveedores y Proyectos</center></html>");
+
+        javax.swing.GroupLayout botonRelacionarLayout = new javax.swing.GroupLayout(botonRelacionar);
+        botonRelacionar.setLayout(botonRelacionarLayout);
+        botonRelacionarLayout.setHorizontalGroup(
+            botonRelacionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+        );
+        botonRelacionarLayout.setVerticalGroup(
+            botonRelacionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        botonSumiProveedores.setBackground(new java.awt.Color(114, 70, 124));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("<html><center>Suministros por proveedores</center><html>");
+
+        javax.swing.GroupLayout botonSumiProveedoresLayout = new javax.swing.GroupLayout(botonSumiProveedores);
+        botonSumiProveedores.setLayout(botonSumiProveedoresLayout);
+        botonSumiProveedoresLayout.setHorizontalGroup(
+            botonSumiProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+        );
+        botonSumiProveedoresLayout.setVerticalGroup(
+            botonSumiProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout botonSumiPiezasLayout = new javax.swing.GroupLayout(botonSumiPiezas);
+        botonSumiPiezas.setLayout(botonSumiPiezasLayout);
+        botonSumiPiezasLayout.setHorizontalGroup(
+            botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 155, Short.MAX_VALUE)
         );
-        botonLayout.setVerticalGroup(
-            botonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        botonSumiPiezasLayout.setVerticalGroup(
+            botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-
-        jPanel2.setBackground(new java.awt.Color(114, 70, 124));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -76,21 +110,27 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         panelMenuTopLayout.setHorizontalGroup(
             panelMenuTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuTopLayout.createSequentialGroup()
-                .addComponent(boton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonRelacionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonSumiProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonSumiPiezas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 514, Short.MAX_VALUE))
+                .addGap(0, 192, Short.MAX_VALUE))
         );
         panelMenuTopLayout.setVerticalGroup(
             panelMenuTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuTopLayout.createSequentialGroup()
                 .addGroup(panelMenuTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRelacionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonSumiProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonSumiPiezas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, -1));
+        add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 60));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -108,9 +148,15 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel boton;
+    private javax.swing.JPanel botonRelacionar;
+    private javax.swing.JPanel botonSumiPiezas;
+    private javax.swing.JPanel botonSumiProveedores;
     private javax.swing.JPanel content;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelMenuTop;
     // End of variables declaration//GEN-END:variables
 }

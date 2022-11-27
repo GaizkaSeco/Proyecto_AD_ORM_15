@@ -10,12 +10,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import consultas.ConsultasProveedores;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
@@ -48,6 +51,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
        jScrollPane1.getViewport().setBackground(Color.WHITE);
        jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
        fixtable(jScrollPane1);
+       cargarDatos();
     }
     
     public void fixtable(JScrollPane scroll) {
@@ -56,6 +60,30 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         JPanel p = new JPanel();
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
         scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+    }
+
+    public void cargarDatos() {
+        ConsultasProveedores con = new ConsultasProveedores();
+        con.recuperarProveedores();
+        /*try {
+
+            //se crea el flujo de salida
+            File file = new File("Productos.dat");
+            FileInputStream filein = new FileInputStream(file);
+            ObjectInputStream fileobj = new ObjectInputStream(filein);
+
+            //cragamos los datos al array
+            datos.clear();
+            Producto producto;
+            while ((producto = (Producto) fileobj.readObject()) != null) {
+                datos.add(producto);
+            }
+            fileobj.close();
+        } catch (IOException e) {
+            System.out.println("");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error al intentar acceder al los datos.");
+        }*/
     }
 
     /**
@@ -215,7 +243,6 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

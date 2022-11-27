@@ -5,6 +5,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -52,6 +54,11 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
 
         botonGestionPiezas.setBackground(new java.awt.Color(198, 177, 201));
         botonGestionPiezas.setPreferredSize(new java.awt.Dimension(155, 60));
+        botonGestionPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonGestionPiezasMousePressed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Gestion de piezas");
@@ -75,6 +82,11 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
 
         botonNuevaPieza.setBackground(new java.awt.Color(114, 70, 124));
         botonNuevaPieza.setPreferredSize(new java.awt.Dimension(155, 60));
+        botonNuevaPieza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonNuevaPiezaMousePressed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Añadir Pieza");
@@ -131,11 +143,42 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
         add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonGestionPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGestionPiezasMousePressed
+        setColor(botonGestionPiezas);
+        resetColor(botonNuevaPieza);
+                
+        PanelGestionPiezas frame = new PanelGestionPiezas();
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonGestionPiezasMousePressed
+
+    private void botonNuevaPiezaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevaPiezaMousePressed
+        setColor(botonNuevaPieza);
+        resetColor(botonGestionPiezas);
+                
+        PanelNuevaPieza frame = new PanelNuevaPieza();
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonNuevaPiezaMousePressed
+
+    private void setColor(JPanel pane) {
+        pane.setBackground(new Color(198,177,201));
+    }
+    
+    private void resetColor(JPanel pane) {
+        pane.setBackground(new Color(114,70,124));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonGestionPiezas;
-    private javax.swing.JPanel botonGestionPiezas1;
-    private javax.swing.JPanel botonGestionPiezas2;
     private javax.swing.JPanel botonNuevaPieza;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;

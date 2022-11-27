@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.AgenciasEntity" table="agencias" schema="proyecto_ad">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="nombre">
+            <column name="nombre" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="fechaApertura">
+            <column name="fecha_apertura" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="direccion">
+            <column name="direccion" sql-type="varchar(25)" length="25"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(40)" length="40"/>
+        </property>
+        <property name="telefono">
+            <column name="telefono" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>

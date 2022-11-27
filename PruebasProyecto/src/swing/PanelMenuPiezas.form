@@ -74,6 +74,9 @@
               <Dimension value="[155, 60]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonGestionPiezasMousePressed"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -115,6 +118,9 @@
               <Dimension value="[155, 60]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonNuevaPiezaMousePressed"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
