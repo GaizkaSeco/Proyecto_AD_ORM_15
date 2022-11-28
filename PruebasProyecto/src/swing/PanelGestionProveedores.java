@@ -6,54 +6,50 @@ package swing;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import consultas.ConsultasProveedores;
+import hibernate.AgenciasEntity;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
 /**
- *
  * @author omega
  */
 public class PanelGestionProveedores extends javax.swing.JPanel {
+    String[] nombreColumnas = {"ID", "Nombre", "Direccion"};
 
     /**
      * Creates new form GestionProveedores
      */
     public PanelGestionProveedores() {
         initComponents();
-        
-       jTable1.setShowHorizontalLines(true);
-       jTable1.setGridColor(new Color(230,230,230));
-       jTable1.setRowHeight(30);
-       jTable1.getTableHeader().setReorderingAllowed(true);
-       jTable1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+
+        jTable1.setShowHorizontalLines(true);
+        jTable1.setGridColor(new Color(230, 230, 230));
+        jTable1.setRowHeight(30);
+        jTable1.getTableHeader().setReorderingAllowed(true);
+        jTable1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 TableHeader header = new TableHeader(value + "");
-                if(column==4){
+                if (column == nombreColumnas.length) {
                     header.setHorizontalAlignment(JLabel.CENTER);
                 }
                 return header;
             }
-       });
-       jScrollPane1.getViewport().setBackground(Color.WHITE);
-       jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
-       fixtable(jScrollPane1);
-       cargarDatos();
+        });
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
+        fixtable(jScrollPane1);
+        cargarDatos();
     }
-    
+
     public void fixtable(JScrollPane scroll) {
         scroll.getViewport().setBackground(Color.WHITE);
         scroll.setVerticalScrollBar(new ScrollBarCustom());
@@ -64,26 +60,22 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
     public void cargarDatos() {
         ConsultasProveedores con = new ConsultasProveedores();
-        con.recuperarProveedores();
-        /*try {
-
-            //se crea el flujo de salida
-            File file = new File("Productos.dat");
-            FileInputStream filein = new FileInputStream(file);
-            ObjectInputStream fileobj = new ObjectInputStream(filein);
-
-            //cragamos los datos al array
-            datos.clear();
-            Producto producto;
-            while ((producto = (Producto) fileobj.readObject()) != null) {
-                datos.add(producto);
+        List<AgenciasEntity> agencias = new ArrayList<AgenciasEntity>();
+        agencias = con.recuperarProveedores();
+        int cantidad = agencias.size();
+        String[][] d = new String[cantidad][3];
+        for (int i = 0; i < agencias.size(); i++) {
+            d[i][0] = String.valueOf(agencias.get(i).getId());
+            d[i][1] = String.valueOf(agencias.get(i).getNombre());
+            d[i][2] = String.valueOf(agencias.get(i).getDireccion());
+        }
+        //se carga el modelo de la tabla
+        jTable1.setModel(new DefaultTableModel(d, nombreColumnas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
             }
-            fileobj.close();
-        } catch (IOException e) {
-            System.out.println("");
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Ha surgido un error al intentar acceder al los datos.");
-        }*/
+        });
     }
 
     /**
@@ -97,11 +89,11 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        botonBaja = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        botonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        botonVer = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 244, 244));
@@ -109,42 +101,10 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "null", "null", "null", "null"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -160,20 +120,26 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
+        botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBajaMousePressed(evt);
+            }
+        });
+
         jLabel1.setText("Dar de baja");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout botonBajaLayout = new javax.swing.GroupLayout(botonBaja);
+        botonBaja.setLayout(botonBajaLayout);
+        botonBajaLayout.setHorizontalGroup(
+            botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonBajaLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        botonBajaLayout.setVerticalGroup(
+            botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonBajaLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -181,37 +147,37 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
         jLabel2.setText("Editar");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
+        botonEditar.setLayout(botonEditarLayout);
+        botonEditarLayout.setHorizontalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonEditarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        botonEditarLayout.setVerticalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonEditarLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Ver Proveedor");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+        javax.swing.GroupLayout botonVerLayout = new javax.swing.GroupLayout(botonVer);
+        botonVer.setLayout(botonVerLayout);
+        botonVerLayout.setHorizontalGroup(
+            botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonVerLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        botonVerLayout.setVerticalGroup(
+            botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonVerLayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(16, 16, 16))
@@ -222,35 +188,39 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(44, 44, 44))
+                    .addComponent(botonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(botonVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBajaMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botonBaja;
+    private javax.swing.JPanel botonEditar;
+    private javax.swing.JPanel botonVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

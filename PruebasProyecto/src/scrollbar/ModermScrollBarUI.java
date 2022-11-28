@@ -18,19 +18,6 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
  * @author omega
  */
 public class ModermScrollBarUI extends BasicScrollBarUI{
-
-    /*private final int THUMB_SIZE = 200;
-    
-    @Override
-    protected Dimension getMaximumThumbSize() {
-        return new Dimension(0, THUMB_SIZE);
-    }
-
-    @Override
-    protected Dimension getMinimumThumbSize() {
-        return new Dimension(0, THUMB_SIZE);
-    }*/
-    
     @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle rectangle) {
         Graphics2D g2 = (Graphics2D) g;
