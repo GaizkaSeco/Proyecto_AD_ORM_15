@@ -156,7 +156,7 @@ public class PanelMenuProveedores extends javax.swing.JPanel {
         setColor(botonAltas);
         resetColor(botonGestionProveedores);
         
-        PanelNuevoProveedor frame = new PanelNuevoProveedor();
+        PanelNuevoProveedor frame = new PanelNuevoProveedor(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
