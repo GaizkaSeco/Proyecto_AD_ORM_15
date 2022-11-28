@@ -4,6 +4,7 @@
  */
 package swing;
 
+import consultas.ConsultasProveedores;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,7 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
     }
     
     public void anadirProveedor() {
-    
+        ConsultasProveedores con = new ConsultasProveedores();
     }
 
     /**

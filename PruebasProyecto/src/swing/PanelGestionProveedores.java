@@ -14,8 +14,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import consultas.ConsultasProveedores;
-import hibernate.AgenciasEntity;
+
 import java.awt.BorderLayout;
+
+import hibernate.ProveedoresEntity;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
@@ -23,7 +25,7 @@ import table.TableHeader;
  * @author omega
  */
 public class PanelGestionProveedores extends javax.swing.JPanel {
-    String[] nombreColumnas = {"ID", "Nombre", "Direccion"};
+    String[] nombreColumnas = {"Codigo", "Nombre", "Apellido"};
     JPanel content = null;
 
     /**
@@ -64,14 +66,14 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
     public void cargarDatos() {
         ConsultasProveedores con = new ConsultasProveedores();
-        List<AgenciasEntity> agencias = new ArrayList<AgenciasEntity>();
-        agencias = con.recuperarProveedores();
-        int cantidad = agencias.size();
+        List<ProveedoresEntity> proveedores = new ArrayList<ProveedoresEntity>();
+        proveedores = con.recuperarProveedores();
+        int cantidad = proveedores.size();
         String[][] d = new String[cantidad][3];
-        for (int i = 0; i < agencias.size(); i++) {
-            d[i][0] = String.valueOf(agencias.get(i).getId());
-            d[i][1] = String.valueOf(agencias.get(i).getNombre());
-            d[i][2] = String.valueOf(agencias.get(i).getDireccion());
+        for (int i = 0; i < proveedores.size(); i++) {
+            d[i][0] = String.valueOf(proveedores.get(i).getCodigo());
+            d[i][1] = String.valueOf(proveedores.get(i).getNombre());
+            d[i][2] = String.valueOf(proveedores.get(i).getApellidos());
         }
         //se carga el modelo de la tabla
         table1.setModel(new DefaultTableModel(d, nombreColumnas) {
@@ -80,6 +82,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
                 return false;
             }
         });
+        con.cerrarConexion();
     }
 
     public void eliminarProveedor(int id) {
@@ -166,7 +169,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 155, -1));
+        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 155, -1));
 
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -189,7 +192,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 155, -1));
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 155, -1));
 
         botonVer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -212,7 +215,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, -1, -1));
+        add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed

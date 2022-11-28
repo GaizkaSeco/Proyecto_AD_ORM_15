@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.GestionEntity" table="gestion" schema="proyecto_ad_final">
+        <composite-id mapped="true" class="hibernate.GestionEntityPK">
+            <key-property name="codproveedor">
+                <column name="codproveedor" sql-type="varchar(6)" length="6"/>
+            </key-property>
+            <key-property name="codpieza">
+                <column name="codpieza" sql-type="varchar(6)" length="6"/>
+            </key-property>
+            <key-property name="codproyecto">
+                <column name="codproyecto" sql-type="varchar(6)" length="6"/>
+            </key-property>
+        </composite-id>
+        <property name="cantidad">
+            <column name="cantidad" sql-type="int"/>
+        </property>
+        <property name="estado">
+            <column name="estado" sql-type="varchar(4)" length="4"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -4,18 +4,28 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/proyecto_ad</property>
+        <property name="hibernate.ejb.metamodel.population">disabled</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/proyecto_ad_final</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property
+                name="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+        </property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">admin</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.query.factory_class">
-            org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory
+        <property
+                name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory
         </property>
         <property name="current_session_context_class">thread</property>
-        <mapping resource="AgenciasEntity.hbm.xml"/>
-        <mapping class="hibernate.AgenciasEntity"/>
+        <mapping class="hibernate.PiezasEntity"/>
+        <mapping resource="PiezasEntity.hbm.xml"/>
+        <mapping class="hibernate.ProveedoresEntity"/>
+        <mapping resource="ProveedoresEntity.hbm.xml"/>
+        <mapping class="hibernate.ProyectosEntity"/>
+        <mapping resource="ProyectosEntity.hbm.xml"/>
+        <mapping resource="GestionEntity.hbm.xml"/>
+        <mapping class="hibernate.GestionEntity"/>
+
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
