@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import consultas.ConsultasProveedores;
 import hibernate.AgenciasEntity;
+import java.awt.BorderLayout;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
@@ -23,18 +24,21 @@ import table.TableHeader;
  */
 public class PanelGestionProveedores extends javax.swing.JPanel {
     String[] nombreColumnas = {"ID", "Nombre", "Direccion"};
+    JPanel content = null;
 
     /**
      * Creates new form GestionProveedores
+     * @param content panel para cargar los paneles
      */
-    public PanelGestionProveedores() {
+    public PanelGestionProveedores(JPanel content) {
         initComponents();
+        this.content = content;
 
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setGridColor(new Color(230, 230, 230));
-        jTable1.setRowHeight(30);
-        jTable1.getTableHeader().setReorderingAllowed(true);
-        jTable1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+        table1.setShowHorizontalLines(true);
+        table1.setGridColor(new Color(230, 230, 230));
+        table1.setRowHeight(30);
+        table1.getTableHeader().setReorderingAllowed(true);
+        table1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 TableHeader header = new TableHeader(value + "");
@@ -70,12 +74,30 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             d[i][2] = String.valueOf(agencias.get(i).getDireccion());
         }
         //se carga el modelo de la tabla
-        jTable1.setModel(new DefaultTableModel(d, nombreColumnas) {
+        table1.setModel(new DefaultTableModel(d, nombreColumnas) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         });
+    }
+
+    public void eliminarProveedor(int id) {
+        
+    }
+    
+    public void editarProveedor(int id) {        
+        PanelEditarProveedor frame = new PanelEditarProveedor(content);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+    
+    public void verProveedor(int id) {
+        
     }
 
     /**
@@ -88,18 +110,19 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table1 = new javax.swing.JTable();
         botonBaja = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         botonVer = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(244, 244, 244));
+        setBackground(new java.awt.Color(142, 105, 149));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -115,10 +138,12 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionBackground(new java.awt.Color(198, 177, 201));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        table1.setGridColor(new java.awt.Color(255, 255, 255));
+        table1.setSelectionBackground(new java.awt.Color(198, 177, 201));
+        table1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(table1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 611, 490));
 
         botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -126,93 +151,99 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Dar de baja");
 
         javax.swing.GroupLayout botonBajaLayout = new javax.swing.GroupLayout(botonBaja);
         botonBaja.setLayout(botonBajaLayout);
         botonBajaLayout.setHorizontalGroup(
             botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBajaLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonBajaLayout.setVerticalGroup(
             botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBajaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
+        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 155, -1));
+
+        botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEditarMousePressed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Editar");
 
         javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
         botonEditar.setLayout(botonEditarLayout);
         botonEditarLayout.setHorizontalGroup(
             botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonEditarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonEditarLayout.setVerticalGroup(
             botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonEditarLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel3.setText("Ver Proveedor");
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 155, -1));
+
+        botonVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonVerMousePressed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Ver Proveedor");
 
         javax.swing.GroupLayout botonVerLayout = new javax.swing.GroupLayout(botonVer);
         botonVer.setLayout(botonVerLayout);
         botonVerLayout.setHorizontalGroup(
             botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonVerLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonVerLayout.setVerticalGroup(
             botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonVerLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(16, 16, 16))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(botonVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(133, 133, 133))
-        );
+        add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed
-        // TODO add your handling code here:
+        if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Para eliminar debes haber seleccionado algun dato en la tabla.");
+        } else {
+            //Obtencion del id del objeto seleccionaod en la tabla
+            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+            eliminarProveedor(id);
+        }
     }//GEN-LAST:event_botonBajaMousePressed
+
+    private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
+        if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Para editar debes haber seleccionado algun dato en la tabla.");
+        } else {
+            //Obtencion del id del objeto seleccionaod en la tabla
+            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+            editarProveedor(id);
+        }
+    }//GEN-LAST:event_botonEditarMousePressed
+
+    private void botonVerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVerMousePressed
+        if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Para ver debes haber seleccionado algun dato en la tabla.");
+        } else {
+            //Obtencion del id del objeto seleccionaod en la tabla
+            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
+            verProveedor(id);
+        }
+    }//GEN-LAST:event_botonVerMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonBaja;
@@ -220,8 +251,8 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
     private javax.swing.JPanel botonVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }

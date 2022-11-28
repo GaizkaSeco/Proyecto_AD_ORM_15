@@ -20,7 +20,7 @@ public class PanelMenuProveedores extends javax.swing.JPanel {
     public PanelMenuProveedores() {
         initComponents();
         
-        PanelGestionProveedores frame = new PanelGestionProveedores();
+        PanelGestionProveedores frame = new PanelGestionProveedores(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -143,7 +143,7 @@ public class PanelMenuProveedores extends javax.swing.JPanel {
         setColor(botonGestionProveedores);
         resetColor(botonAltas);
         
-        PanelGestionProveedores frame = new PanelGestionProveedores();
+        PanelGestionProveedores frame = new PanelGestionProveedores(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -171,12 +171,12 @@ public class PanelMenuProveedores extends javax.swing.JPanel {
     
     private void resetColor(JPanel pane) {
         pane.setBackground(new Color(114,70,124));
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonAltas;
     private javax.swing.JPanel botonGestionProveedores;
-    private javax.swing.JPanel content;
+    public javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panelMenuTop;

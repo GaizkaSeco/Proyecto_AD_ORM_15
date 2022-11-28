@@ -4,23 +4,22 @@
  */
 package swing;
 
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
- *
- * @author 9FDAM09
+ * @author omega
  */
-public class PanelNuevoProveedor extends javax.swing.JPanel {
+public class PanelEditarProveedor extends javax.swing.JPanel {
+    JPanel content;
 
     /**
-     * Creates new form NuevoProveedor
+     * Creates new form PanelEditarProveedor
      */
-    public PanelNuevoProveedor() {
+    public PanelEditarProveedor(JPanel content) {
         initComponents();
-    }
-    
-    public void anadirProveedor() {
-    
+        this.content = content;
     }
 
     /**
@@ -44,6 +43,10 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         botonAnadir = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        botonCancelar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(142, 105, 149));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,7 +54,7 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nombre: ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 70, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 70, 30));
 
         nombreField.setBackground(new java.awt.Color(142, 105, 149));
         nombreField.setForeground(new java.awt.Color(204, 204, 204));
@@ -61,14 +64,14 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
                 nombreFieldActionPerformed(evt);
             }
         });
-        add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 350, 30));
+        add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("NUEVO PROVEEDOR");
+        jLabel2.setText("EDITAR PROVEEDOR");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 830, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 350, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 350, -1));
 
         apellidoField.setBackground(new java.awt.Color(142, 105, 149));
         apellidoField.setForeground(new java.awt.Color(204, 204, 204));
@@ -78,13 +81,13 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
                 apellidoFieldActionPerformed(evt);
             }
         });
-        add(apellidoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 350, 30));
+        add(apellidoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido: ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 70, 30));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 350, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 350, -1));
 
         descripccionField.setBackground(new java.awt.Color(142, 105, 149));
         descripccionField.setForeground(new java.awt.Color(204, 204, 204));
@@ -94,13 +97,13 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
                 descripccionFieldActionPerformed(evt);
             }
         });
-        add(descripccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 330, 30));
+        add(descripccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Direcccion: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 100, 30));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 330, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 100, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 330, -1));
 
         botonAnadir.setBackground(new java.awt.Color(198, 177, 201));
         botonAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,7 +115,7 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("AÑADIR PROVEEDOR");
+        jLabel6.setText("EDITAR PROVEEDOR");
 
         javax.swing.GroupLayout botonAnadirLayout = new javax.swing.GroupLayout(botonAnadir);
         botonAnadir.setLayout(botonAnadirLayout);
@@ -127,7 +130,47 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 160, 50));
+        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 160, 50));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Estado:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 100, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 190, -1));
+
+        botonCancelar.setBackground(new java.awt.Color(198, 177, 201));
+        botonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonCancelarMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("CANCELAR");
+
+        javax.swing.GroupLayout botonCancelarLayout = new javax.swing.GroupLayout(botonCancelar);
+        botonCancelar.setLayout(botonCancelarLayout);
+        botonCancelarLayout.setHorizontalGroup(
+            botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        botonCancelarLayout.setVerticalGroup(
+            botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonCancelarLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+
+        add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 160, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
@@ -146,20 +189,38 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
         if (nombreField.getText().isBlank() || apellidoField.getText().isBlank() || descripccionField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un proveedor.");
         } else {
-            anadirProveedor();
+
         }
     }//GEN-LAST:event_botonAnadirMousePressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void botonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCancelarMousePressed
+        PanelGestionProveedores frame = new PanelGestionProveedores(content);
+        frame.setSize(830, 490);
+        frame.setLocation(0, 0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonCancelarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidoField;
     private javax.swing.JPanel botonAnadir;
+    private javax.swing.JPanel botonCancelar;
     private javax.swing.JTextField descripccionField;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
