@@ -5,8 +5,8 @@
 <hibernate-mapping>
 
     <class name="hibernate.ProyectosEntity" table="proyectos" schema="proyecto_ad_final">
-        <id name="codigo">
-            <column name="codigo" sql-type="varchar(6)" length="6"/>
+        <id name="codproye">
+            <column name="codproye" sql-type="varchar(6)" length="6"/>
         </id>
         <property name="nombre">
             <column name="nombre" sql-type="varchar(40)" length="40"/>

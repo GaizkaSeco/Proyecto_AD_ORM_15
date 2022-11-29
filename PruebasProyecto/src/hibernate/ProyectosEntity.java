@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class ProyectosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "codigo", nullable = false, length = 6)
-    private String codigo;
+    @Column(name = "codproye", nullable = false, length = 6)
+    private String codproye;
     @Basic
     @Column(name = "nombre", nullable = false, length = 40)
     private String nombre;
@@ -19,12 +19,12 @@ public class ProyectosEntity {
     @Column(name = "estado", nullable = false, length = 4)
     private String estado;
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodproye() {
+        return codproye;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodproye(String codproye) {
+        this.codproye = codproye;
     }
 
     public String getNombre() {

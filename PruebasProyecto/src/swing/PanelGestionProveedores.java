@@ -25,7 +25,7 @@ import table.TableHeader;
  * @author omega
  */
 public class PanelGestionProveedores extends javax.swing.JPanel {
-    String[] nombreColumnas = {"Codigo", "Nombre", "Apellido"};
+    String[] nombreColumnas = {"Codigo", "Nombre", "Apellido", "Direccion", "Estado"};
     JPanel content = null;
 
     /**
@@ -69,11 +69,13 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         List<ProveedoresEntity> proveedores = new ArrayList<ProveedoresEntity>();
         proveedores = con.recuperarProveedores();
         int cantidad = proveedores.size();
-        String[][] d = new String[cantidad][3];
+        String[][] d = new String[cantidad][5];
         for (int i = 0; i < proveedores.size(); i++) {
-            d[i][0] = String.valueOf(proveedores.get(i).getCodigo());
+            d[i][0] = String.valueOf(proveedores.get(i).getCodprov());
             d[i][1] = String.valueOf(proveedores.get(i).getNombre());
             d[i][2] = String.valueOf(proveedores.get(i).getApellidos());
+            d[i][3] = String.valueOf(proveedores.get(i).getEstado());
+            d[i][4] = String.valueOf(proveedores.get(i).getDireccion());
         }
         //se carga el modelo de la tabla
         table1.setModel(new DefaultTableModel(d, nombreColumnas) {
@@ -85,12 +87,15 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         con.cerrarConexion();
     }
 
-    public void eliminarProveedor(int id) {
-        
+    public void bajaProveedor(String codigo) {
+        ConsultasProveedores con = new ConsultasProveedores();
+        con.bajaProveedor(codigo);
+        con.cerrarConexion();
+        cargarDatos();
     }
     
-    public void editarProveedor(int id) {        
-        PanelEditarProveedor frame = new PanelEditarProveedor(content);
+    public void editarProveedor(String codigo) {
+        PanelEditarProveedor frame = new PanelEditarProveedor(content, codigo);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -118,11 +123,11 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         botonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        botonVer = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(142, 105, 149));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 403));
 
         table1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -146,7 +151,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         table1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 611, 490));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 490));
 
         botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -169,7 +174,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 155, -1));
+        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 155, -1));
 
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -192,30 +197,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 155, -1));
-
-        botonVer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonVerMousePressed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Ver Proveedor");
-
-        javax.swing.GroupLayout botonVerLayout = new javax.swing.GroupLayout(botonVer);
-        botonVer.setLayout(botonVerLayout);
-        botonVerLayout.setHorizontalGroup(
-            botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-        );
-        botonVerLayout.setVerticalGroup(
-            botonVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 155, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed
@@ -223,8 +205,8 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Para eliminar debes haber seleccionado algun dato en la tabla.");
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
-            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-            eliminarProveedor(id);
+            String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
+            bajaProveedor(codigo);
         }
     }//GEN-LAST:event_botonBajaMousePressed
 
@@ -233,28 +215,16 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Para editar debes haber seleccionado algun dato en la tabla.");
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
-            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-            editarProveedor(id);
+            String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
+            editarProveedor(codigo);
         }
     }//GEN-LAST:event_botonEditarMousePressed
-
-    private void botonVerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVerMousePressed
-        if (table1.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Para ver debes haber seleccionado algun dato en la tabla.");
-        } else {
-            //Obtencion del id del objeto seleccionaod en la tabla
-            int id = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
-            verProveedor(id);
-        }
-    }//GEN-LAST:event_botonVerMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonBaja;
     private javax.swing.JPanel botonEditar;
-    private javax.swing.JPanel botonVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables

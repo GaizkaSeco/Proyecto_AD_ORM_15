@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class PiezasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "codigo", nullable = false, length = 6)
-    private String codigo;
+    @Column(name = "codpiezas", nullable = false, length = 6)
+    private String codpiezas;
     @Basic
     @Column(name = "nombre", nullable = false, length = 20)
     private String nombre;
@@ -22,12 +22,12 @@ public class PiezasEntity {
     @Column(name = "estado", nullable = false, length = 4)
     private String estado;
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodpiezas() {
+        return codpiezas;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodpiezas(String codpiezas) {
+        this.codpiezas = codpiezas;
     }
 
     public String getNombre() {

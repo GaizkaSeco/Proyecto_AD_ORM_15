@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class ProveedoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "codigo", nullable = false, length = 6)
-    private String codigo;
+    @Column(name = "codprov", nullable = false, length = 6)
+    private String codprov;
     @Basic
     @Column(name = "nombre", nullable = false, length = 20)
     private String nombre;
@@ -22,12 +22,12 @@ public class ProveedoresEntity {
     @Column(name = "estado", nullable = false, length = 4)
     private String estado;
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodprov() {
+        return codprov;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodprov(String codprov) {
+        this.codprov = codprov;
     }
 
     public String getNombre() {

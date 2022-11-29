@@ -35,10 +35,16 @@ public class ConsultasProveedores {
         return proveedores;
     }
 
+    public ProveedoresEntity cargarDatoConcreto(String codigo) {
+            ProveedoresEntity proveedor = new ProveedoresEntity();
+            proveedor = session.load(ProveedoresEntity.class, codigo);
+            return proveedor;
+    }
+
     public boolean anadirProveedor(String codigo, String nombre, String apellido, String direccion) {
         ProveedoresEntity proveedor = new ProveedoresEntity();
         Transaction tx = session.beginTransaction();
-        proveedor.setCodigo(codigo);
+        proveedor.setCodprov(codigo);
         proveedor.setNombre(nombre);
         proveedor.setApellidos(apellido);
         proveedor.setDireccion(direccion);
@@ -55,6 +61,34 @@ public class ConsultasProveedores {
             return false;
         }
         return true;
+    }
+
+    public boolean editarProveedor(String codigo, String nombre, String apellido, String direccion, String estado) {
+        ProveedoresEntity proveedor = new ProveedoresEntity();
+        Transaction tx = session.beginTransaction();
+        proveedor.setCodprov(codigo);
+        proveedor.setNombre(nombre);
+        proveedor.setApellidos(apellido);
+        proveedor.setDireccion(direccion);
+        proveedor.setEstado(estado);
+        session.update(proveedor);
+        try {
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "El proveedor se ha editado correctamente.");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error intentalo de nuevo mas tarde.");
+            return false;
+        }
+        return true;
+    }
+
+    public void bajaProveedor(String codigo) {
+        ProveedoresEntity pro = new ProveedoresEntity();
+        Transaction tx = session.beginTransaction();
+        pro = session.load(ProveedoresEntity.class, codigo);
+        pro.setEstado("baja");
+        tx.commit();
+        session.update(pro);
     }
 
     public void cerrarConexion() {

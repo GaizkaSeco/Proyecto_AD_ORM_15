@@ -13,14 +13,13 @@ import javax.swing.JPanel;
  * @author omega
  */
 public class PanelMenuPiezas extends javax.swing.JPanel {
-
     /**
      * Creates new form PanelMenuPiezas
      */
     public PanelMenuPiezas() {
         initComponents();
         
-        PanelGestionPiezas frame = new PanelGestionPiezas();
+        PanelGestionPiezas frame = new PanelGestionPiezas(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -147,7 +146,7 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
         setColor(botonGestionPiezas);
         resetColor(botonNuevaPieza);
                 
-        PanelGestionPiezas frame = new PanelGestionPiezas();
+        PanelGestionPiezas frame = new PanelGestionPiezas(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
