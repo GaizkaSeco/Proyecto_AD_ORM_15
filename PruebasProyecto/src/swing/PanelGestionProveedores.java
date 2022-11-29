@@ -26,7 +26,7 @@ import table.TableHeader;
  */
 public class PanelGestionProveedores extends javax.swing.JPanel {
     String[] nombreColumnas = {"Codigo", "Nombre", "Apellido", "Direccion", "Estado"};
-    JPanel content = null;
+    JPanel content;
 
     /**
      * Creates new form GestionProveedores
@@ -102,10 +102,6 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         content.add(frame, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-    }
-    
-    public void verProveedor(int id) {
-        
     }
 
     /**

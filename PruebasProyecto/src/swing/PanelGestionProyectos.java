@@ -4,17 +4,51 @@
  */
 package swing;
 
+import consultas.ConsultasProveedores;
+import consultas.ConsultasProyectos;
+import hibernate.ProveedoresEntity;
+import hibernate.ProyectosEntity;
+import scrollbar.ScrollBarCustom;
+import table.TableHeader;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author omega
  */
 public class PanelGestionProyectos extends javax.swing.JPanel {
-
+    String[] nombreColumnas = {"Codigo", "Nombre", "Ciudad", "Estado"};
+    JPanel content;
     /**
      * Creates new form PanelGestionProyectos
      */
     public PanelGestionProyectos() {
         initComponents();
+        table1.setShowHorizontalLines(true);
+        table1.setGridColor(new Color(230, 230, 230));
+        table1.setRowHeight(30);
+        table1.getTableHeader().setReorderingAllowed(true);
+        table1.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                TableHeader header = new TableHeader(value + "");
+                if (column == nombreColumnas.length) {
+                    header.setHorizontalAlignment(JLabel.CENTER);
+                }
+                return header;
+            }
+        });
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
+        fixtable(jScrollPane1);
+        cargarDatos();
     }
 
     /**
@@ -27,11 +61,16 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table1 = new javax.swing.JTable();
+        botonBaja = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        botonEditar = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(142, 105, 149));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,29 +81,131 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
-                .addContainerGap())
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 490));
+
+        botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBajaMousePressed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Dar de baja");
+
+        javax.swing.GroupLayout botonBajaLayout = new javax.swing.GroupLayout(botonBaja);
+        botonBaja.setLayout(botonBajaLayout);
+        botonBajaLayout.setHorizontalGroup(
+            botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                .addContainerGap())
+        botonBajaLayout.setVerticalGroup(
+            botonBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
+
+        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 155, -1));
+
+        botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEditarMousePressed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Editar");
+
+        javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
+        botonEditar.setLayout(botonEditarLayout);
+        botonEditarLayout.setHorizontalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+        );
+        botonEditarLayout.setVerticalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 155, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    public void fixtable(JScrollPane scroll) {
+        scroll.getViewport().setBackground(Color.WHITE);
+        scroll.setVerticalScrollBar(new ScrollBarCustom());
+        JPanel p = new JPanel();
+        scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+        scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+    }
+
+    public void bajaProyecto(String codigo) {
+        ConsultasProyectos con = new ConsultasProyectos();
+        con.bajaProyecto(codigo);
+        con.cerrarConexion();
+        cargarDatos();
+    }
+
+    public void editarProyecto(String codigo) {
+        PanelEditarProveedor frame = new PanelEditarProveedor(content, codigo);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+
+    public void cargarDatos() {
+        ConsultasProyectos con = new ConsultasProyectos();
+        List<ProyectosEntity> proyectos = new ArrayList<ProyectosEntity>();
+        proyectos = con.recuperarProyectos();
+        int cantidad = proyectos.size();
+        String[][] d = new String[cantidad][4];
+        for (int i = 0; i < proyectos.size(); i++) {
+            d[i][0] = String.valueOf(proyectos.get(i).getCodproye());
+            d[i][1] = String.valueOf(proyectos.get(i).getNombre());
+            d[i][2] = String.valueOf(proyectos.get(i).getCiudad());
+            d[i][3] = String.valueOf(proyectos.get(i).getEstado());
+        }
+        //se carga el modelo de la tabla
+        table1.setModel(new DefaultTableModel(d, nombreColumnas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        con.cerrarConexion();
+    }
+
+    private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed
+        if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Para eliminar debes haber seleccionado algun dato en la tabla.");
+        } else {
+            //Obtencion del id del objeto seleccionaod en la tabla
+            String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
+            bajaProyecto(codigo);
+        }
+    }//GEN-LAST:event_botonBajaMousePressed
+
+    private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
+        /*if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Para editar debes haber seleccionado algun dato en la tabla.");
+        } else {
+            //Obtencion del id del objeto seleccionaod en la tabla
+            String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
+            editarProveedor(codigo);
+        }*/
+    }//GEN-LAST:event_botonEditarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botonBaja;
+    private javax.swing.JPanel botonEditar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }
