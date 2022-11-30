@@ -3,6 +3,7 @@ package consultas;
 import hibernate.HibernateUtil;
 import hibernate.PiezasEntity;
 import hibernate.ProveedoresEntity;
+import hibernate.ProyectosEntity;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -55,6 +56,31 @@ public class ConsultasPiezas {
             System.out.println("ERROR");
         }
         return piezas;
+    }
+
+    public PiezasEntity cargarDatoConcreto(String codigo) {
+        PiezasEntity pieza = new PiezasEntity();
+        pieza = session.load(PiezasEntity.class, codigo);
+        return pieza;
+    }
+
+    public boolean editarPieza(String codigo, String nombre, float precio, String descripcion, String estado) {
+        PiezasEntity pieza = new PiezasEntity();
+        Transaction tx = session.beginTransaction();
+        pieza.setCodpiezas(codigo);
+        pieza.setNombre(nombre);
+        pieza.setPrecio(precio);
+        pieza.setDescripcion(descripcion);
+        pieza.setEstado(estado);
+        session.update(pieza);
+        try {
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "La pieza se ha editado correctamente.");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error intentalo de nuevo mas tarde.");
+            return false;
+        }
+        return true;
     }
 
     public void bajaPieza(String codigo) {

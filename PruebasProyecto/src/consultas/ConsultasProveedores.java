@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ConsultasProveedores {
     Session session = null;
-    List<ProveedoresEntity> proveedores =new ArrayList<ProveedoresEntity>();
+    List<ProveedoresEntity> proveedores = new ArrayList<ProveedoresEntity>();
 
     public ConsultasProveedores() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -36,9 +36,9 @@ public class ConsultasProveedores {
     }
 
     public ProveedoresEntity cargarDatoConcreto(String codigo) {
-            ProveedoresEntity proveedor = new ProveedoresEntity();
-            proveedor = session.load(ProveedoresEntity.class, codigo);
-            return proveedor;
+        ProveedoresEntity proveedor = new ProveedoresEntity();
+        proveedor = session.load(ProveedoresEntity.class, codigo);
+        return proveedor;
     }
 
     public boolean anadirProveedor(String codigo, String nombre, String apellido, String direccion) {

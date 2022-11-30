@@ -150,7 +150,7 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
     }
 
     public void editarProyecto(String codigo) {
-        PanelEditarProveedor frame = new PanelEditarProveedor(content, codigo);
+        PanelEditarProyecto frame = new PanelEditarProyecto(content, codigo);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -192,13 +192,13 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_botonBajaMousePressed
 
     private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
-        /*if (table1.getSelectedRow() == -1) {
+        if (table1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Para editar debes haber seleccionado algun dato en la tabla.");
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
             String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
-            editarProveedor(codigo);
-        }*/
+            editarProyecto(codigo);
+        }
     }//GEN-LAST:event_botonEditarMousePressed
 
 

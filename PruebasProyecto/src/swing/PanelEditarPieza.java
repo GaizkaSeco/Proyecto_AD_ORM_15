@@ -4,35 +4,36 @@
  */
 package swing;
 
-import consultas.ConsultasProveedores;
-import hibernate.ProveedoresEntity;
+import consultas.ConsultasPiezas;
+import consultas.ConsultasProyectos;
+import hibernate.PiezasEntity;
+import hibernate.ProyectosEntity;
 
-import java.awt.BorderLayout;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
+ *
  * @author omega
  */
-public class PanelEditarProveedor extends javax.swing.JPanel {
+public class PanelEditarPieza extends javax.swing.JPanel {
     JPanel content;
-
     /**
-     * Creates new form PanelEditarProveedor
+     * Creates new form PanelEditarPieza
      */
-    public PanelEditarProveedor(JPanel content, String codigo) {
+    public PanelEditarPieza(JPanel content, String codigo) {
         initComponents();
         this.content = content;
-        ConsultasProveedores con = new ConsultasProveedores();
-        ProveedoresEntity proveedor = con.cargarDatoConcreto(codigo);
-        codField.setText(proveedor.getCodprov());
-        nombreField.setText(proveedor.getNombre());
-        apellidoField.setText(proveedor.getApellidos());
-        direccionField.setText(proveedor.getDireccion());
+        ConsultasPiezas con = new ConsultasPiezas();
+        PiezasEntity pieza = con.cargarDatoConcreto(codigo);
+        codField.setText(pieza.getCodpiezas());
+        nombreField.setText(pieza.getNombre());
+        precioField.setText(String.valueOf(pieza.getPrecio()));
+        descripcionField.setText(pieza.getDescripcion());
         con.cerrarConexion();
         jComboBox1.addItem("Alta");
         jComboBox1.addItem("Baja");
-        if (proveedor.getEstado().equals("alta")) {
+        if (pieza.getEstado().equals("alta")) {
             jComboBox1.setSelectedIndex(0);
         } else {
             jComboBox1.setSelectedIndex(1);
@@ -58,10 +59,10 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        apellidoField = new javax.swing.JTextField();
+        precioField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        direccionField = new javax.swing.JTextField();
+        descripcionField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
@@ -74,7 +75,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("EDITAR PROVEEDOR");
+        jLabel2.setText("EDITAR PIEZA");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 830, -1));
 
         botonAnadir.setBackground(new java.awt.Color(198, 177, 201));
@@ -87,7 +88,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("EDITAR PROVEEDOR");
+        jLabel6.setText("EDITAR PIEZA");
 
         javax.swing.GroupLayout botonAnadirLayout = new javax.swing.GroupLayout(botonAnadir);
         botonAnadir.setLayout(botonAnadirLayout);
@@ -159,37 +160,37 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 350, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 350, -1));
 
-        apellidoField.setBackground(new java.awt.Color(142, 105, 149));
-        apellidoField.setForeground(new java.awt.Color(204, 204, 204));
-        apellidoField.setBorder(null);
-        apellidoField.addActionListener(new java.awt.event.ActionListener() {
+        precioField.setBackground(new java.awt.Color(142, 105, 149));
+        precioField.setForeground(new java.awt.Color(204, 204, 204));
+        precioField.setBorder(null);
+        precioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoFieldActionPerformed(evt);
+                precioFieldActionPerformed(evt);
             }
         });
-        add(apellidoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 350, 30));
+        add(precioField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Apellido: ");
+        jLabel3.setText("Precio: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 70, 30));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 350, -1));
 
-        direccionField.setBackground(new java.awt.Color(142, 105, 149));
-        direccionField.setForeground(new java.awt.Color(204, 204, 204));
-        direccionField.setBorder(null);
-        direccionField.addActionListener(new java.awt.event.ActionListener() {
+        descripcionField.setBackground(new java.awt.Color(142, 105, 149));
+        descripcionField.setForeground(new java.awt.Color(204, 204, 204));
+        descripcionField.setBorder(null);
+        descripcionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                direccionFieldActionPerformed(evt);
+                descripcionFieldActionPerformed(evt);
             }
         });
-        add(direccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 340, 30));
+        add(descripcionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 320, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Direccion:");
+        jLabel4.setText("Descripcion:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 100, 30));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 340, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 320, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,26 +211,31 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
-        if (nombreField.getText().isBlank() || apellidoField.getText().isBlank() || direccionField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un proveedor.");
-        } else {
-            ConsultasProveedores con = new ConsultasProveedores();
-            String estado;
-            if (jComboBox1.getSelectedIndex() == 0) {
-                estado = "alta";
+        try {
+            float precio = Float.parseFloat(precioField.getText());
+            if (nombreField.getText().isBlank() || descripcionField.getText().isBlank()) {
+                JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un proveedor.");
             } else {
-                estado = "baja";
+                ConsultasPiezas con = new ConsultasPiezas();
+                String estado;
+                if (jComboBox1.getSelectedIndex() == 0) {
+                    estado = "alta";
+                } else {
+                    estado = "baja";
+                }
+                if (con.editarPieza(codField.getText(), nombreField.getText(), precio, descripcionField.getText(), estado)) {
+                    con.cerrarConexion();
+                    PanelGestionPiezas frame = new PanelGestionPiezas(content);
+                    frame.setSize(830, 490);
+                    frame.setLocation(0, 0);
+                    content.removeAll();
+                    content.add(frame, BorderLayout.CENTER);
+                    content.revalidate();
+                    content.repaint();
+                }
             }
-            if (con.editarProveedor(codField.getText(), nombreField.getText(), apellidoField.getText(), direccionField.getText(), estado)) {
-                con.cerrarConexion();
-                PanelGestionProveedores frame = new PanelGestionProveedores(content);
-                frame.setSize(830, 490);
-                frame.setLocation(0, 0);
-                content.removeAll();
-                content.add(frame, BorderLayout.CENTER);
-                content.revalidate();
-                content.repaint();
-            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El precio debe ser en numeros.");
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 
@@ -238,7 +244,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void botonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCancelarMousePressed
-        PanelGestionProveedores frame = new PanelGestionProveedores(content);
+        PanelGestionPiezas frame = new PanelGestionPiezas(content);
         frame.setSize(830, 490);
         frame.setLocation(0, 0);
         content.removeAll();
@@ -251,13 +257,13 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreFieldActionPerformed
 
-    private void apellidoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoFieldActionPerformed
+    private void precioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoFieldActionPerformed
+    }//GEN-LAST:event_precioFieldActionPerformed
 
-    private void direccionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionFieldActionPerformed
+    private void descripcionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_direccionFieldActionPerformed
+    }//GEN-LAST:event_descripcionFieldActionPerformed
 
     private void codFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codFieldActionPerformed
         // TODO add your handling code here:
@@ -265,11 +271,10 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField apellidoField;
     private javax.swing.JPanel botonAnadir;
     private javax.swing.JPanel botonCancelar;
     private javax.swing.JTextField codField;
-    private javax.swing.JTextField direccionField;
+    private javax.swing.JTextField descripcionField;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,5 +289,6 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField nombreField;
+    private javax.swing.JTextField precioField;
     // End of variables declaration//GEN-END:variables
 }
