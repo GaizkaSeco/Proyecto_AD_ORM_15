@@ -7,8 +7,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,27 @@ public class ConsultasProyectos {
             System.out.println("ERROR");
         }
         return piezas;
+    }
+
+    public boolean anadirProyecto(String codigo, String nombre, String ciudad) {
+        ProyectosEntity proyecto = new ProyectosEntity();
+        Transaction tx = session.beginTransaction();
+        proyecto.setCodproye(codigo);
+        proyecto.setNombre(nombre);
+        proyecto.setCiudad(ciudad);
+        proyecto.setEstado("alta");
+        session.save(proyecto);
+        try {
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "El proyecto se ha añadido correctamente.");
+        } catch (ConstraintViolationException e) {
+            System.out.println("EMPLEADO DUPLICADO");
+            System.out.printf("MENSAJE:%s%n", e.getMessage());
+            System.out.printf("COD ERROR:%d%n", e.getErrorCode());
+            System.out.printf("ERROR SQL:%s%n", e.getSQLException().getMessage());
+            return false;
+        }
+        return true;
     }
 
     public void bajaProyecto(String codigo) {

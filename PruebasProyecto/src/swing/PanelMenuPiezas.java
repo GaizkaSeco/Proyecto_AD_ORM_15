@@ -159,7 +159,7 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
         setColor(botonNuevaPieza);
         resetColor(botonGestionPiezas);
                 
-        PanelNuevaPieza frame = new PanelNuevaPieza();
+        PanelNuevaPieza frame = new PanelNuevaPieza(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();

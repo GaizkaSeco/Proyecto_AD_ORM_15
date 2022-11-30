@@ -29,8 +29,10 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
     /**
      * Creates new form PanelGestionProyectos
      */
-    public PanelGestionProyectos() {
+    public PanelGestionProyectos(JPanel content) {
         initComponents();
+        this.content = content;
+
         table1.setShowHorizontalLines(true);
         table1.setGridColor(new Color(230, 230, 230));
         table1.setRowHeight(30);

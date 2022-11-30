@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="PruebasProyecto" options="--add-modules java.desktop,java.logging" />
+      <module name="Proyecto_AD_ORM_15" options="--add-modules java.desktop,java.logging" />
     </option>
   </component>
 </project>

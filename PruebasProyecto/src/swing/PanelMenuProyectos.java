@@ -20,7 +20,7 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
     public PanelMenuProyectos() {
         initComponents();
         
-        PanelGestionProyectos frame = new PanelGestionProyectos();
+        PanelGestionProyectos frame = new PanelGestionProyectos(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -137,7 +137,7 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
         setColor(botonGestionProyectos);
         resetColor(botonNuevoProyecto);
         
-        PanelGestionProyectos frame = new PanelGestionProyectos();
+        PanelGestionProyectos frame = new PanelGestionProyectos(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
@@ -150,7 +150,7 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
         setColor(botonNuevoProyecto);
         resetColor(botonGestionProyectos);
         
-        PanelNuevoProyecto frame = new PanelNuevoProyecto();
+        PanelNuevoProyecto frame = new PanelNuevoProyecto(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();
