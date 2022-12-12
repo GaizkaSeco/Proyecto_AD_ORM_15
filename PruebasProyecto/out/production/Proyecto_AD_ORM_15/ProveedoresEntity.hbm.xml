@@ -20,5 +20,11 @@
         <property name="estado">
             <column name="estado" sql-type="varchar(4)" length="4"/>
         </property>
+        <set name="gestionsByCodprov" inverse="true">
+            <key>
+                <column name="codproveedor"/>
+            </key>
+            <one-to-many not-found="ignore" class="hibernate.GestionEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

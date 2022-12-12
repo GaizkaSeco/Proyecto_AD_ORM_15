@@ -4,50 +4,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "gestion", schema = "proyecto_ad_final", catalog = "")
-@IdClass(GestionEntityPK.class)
 public class GestionEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "codproveedor", nullable = false, length = 6)
-    private String codproveedor;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "codpieza", nullable = false, length = 6)
-    private String codpieza;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "codproyecto", nullable = false, length = 6)
-    private String codproyecto;
     @Basic
     @Column(name = "cantidad", nullable = false)
     private int cantidad;
     @Basic
     @Column(name = "estado", nullable = false, length = 4)
     private String estado;
-
-    public String getCodproveedor() {
-        return codproveedor;
-    }
-
-    public void setCodproveedor(String codproveedor) {
-        this.codproveedor = codproveedor;
-    }
-
-    public String getCodpieza() {
-        return codpieza;
-    }
-
-    public void setCodpieza(String codpieza) {
-        this.codpieza = codpieza;
-    }
-
-    public String getCodproyecto() {
-        return codproyecto;
-    }
-
-    public void setCodproyecto(String codproyecto) {
-        this.codproyecto = codproyecto;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false)
+    private int id;
+    @ManyToOne
+    @JoinColumn(name = "codproveedor", referencedColumnName = "codprov", nullable = false)
+    private ProveedoresEntity proveedoresByCodproveedor;
+    @ManyToOne
+    @JoinColumn(name = "codpieza", referencedColumnName = "codpiezas", nullable = false)
+    private PiezasEntity piezasByCodpieza;
+    @ManyToOne
+    @JoinColumn(name = "codproyecto", referencedColumnName = "codproye", nullable = false)
+    private ProyectosEntity proyectosByCodproyecto;
 
     public int getCantidad() {
         return cantidad;
@@ -63,5 +39,37 @@ public class GestionEntity {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ProveedoresEntity getProveedoresByCodproveedor() {
+        return proveedoresByCodproveedor;
+    }
+
+    public void setProveedoresByCodproveedor(ProveedoresEntity proveedoresByCodproveedor) {
+        this.proveedoresByCodproveedor = proveedoresByCodproveedor;
+    }
+
+    public PiezasEntity getPiezasByCodpieza() {
+        return piezasByCodpieza;
+    }
+
+    public void setPiezasByCodpieza(PiezasEntity piezasByCodpieza) {
+        this.piezasByCodpieza = piezasByCodpieza;
+    }
+
+    public ProyectosEntity getProyectosByCodproyecto() {
+        return proyectosByCodproyecto;
+    }
+
+    public void setProyectosByCodproyecto(ProyectosEntity proyectosByCodproyecto) {
+        this.proyectosByCodproyecto = proyectosByCodproyecto;
     }
 }

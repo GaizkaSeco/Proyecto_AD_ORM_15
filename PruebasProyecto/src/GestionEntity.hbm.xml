@@ -5,22 +5,23 @@
 <hibernate-mapping>
 
     <class name="hibernate.GestionEntity" table="gestion" schema="proyecto_ad_final">
-        <composite-id mapped="true" class="hibernate.GestionEntityPK">
-            <key-property name="codproveedor">
-                <column name="codproveedor" sql-type="varchar(6)" length="6"/>
-            </key-property>
-            <key-property name="codpieza">
-                <column name="codpieza" sql-type="varchar(6)" length="6"/>
-            </key-property>
-            <key-property name="codproyecto">
-                <column name="codproyecto" sql-type="varchar(6)" length="6"/>
-            </key-property>
-        </composite-id>
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
         <property name="cantidad">
             <column name="cantidad" sql-type="int"/>
         </property>
         <property name="estado">
             <column name="estado" sql-type="varchar(4)" length="4"/>
         </property>
+        <many-to-one name="proveedoresByCodproveedor" class="hibernate.ProveedoresEntity">
+            <column name="codproveedor"/>
+        </many-to-one>
+        <many-to-one name="piezasByCodpieza" class="hibernate.PiezasEntity">
+            <column name="codpieza"/>
+        </many-to-one>
+        <many-to-one name="proyectosByCodproyecto" class="hibernate.ProyectosEntity">
+            <column name="codproyecto"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

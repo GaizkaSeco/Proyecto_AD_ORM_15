@@ -1,6 +1,7 @@
 package hibernate;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "proveedores", schema = "proyecto_ad_final", catalog = "")
@@ -21,6 +22,8 @@ public class ProveedoresEntity {
     @Basic
     @Column(name = "estado", nullable = false, length = 4)
     private String estado;
+    @OneToMany(mappedBy = "proveedoresByCodproveedor")
+    private Collection<GestionEntity> gestionsByCodprov;
 
     public String getCodprov() {
         return codprov;
@@ -60,5 +63,13 @@ public class ProveedoresEntity {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Collection<GestionEntity> getGestionsByCodprov() {
+        return gestionsByCodprov;
+    }
+
+    public void setGestionsByCodprov(Collection<GestionEntity> gestionsByCodprov) {
+        this.gestionsByCodprov = gestionsByCodprov;
     }
 }
