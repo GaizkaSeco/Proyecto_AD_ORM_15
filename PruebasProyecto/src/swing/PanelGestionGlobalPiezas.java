@@ -12,11 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
 /**
- *
  * @author omega
  */
 public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
@@ -29,7 +29,7 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
     public PanelGestionGlobalPiezas(JPanel content) {
         initComponents();
         this.content = content;
-        
+
         table1.setShowHorizontalLines(true);
         table1.setGridColor(new Color(230, 230, 230));
         table1.setRowHeight(30);
@@ -47,9 +47,26 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
         fixtable(jScrollPane1);
+        table2.setShowHorizontalLines(true);
+        table2.setGridColor(new Color(230, 230, 230));
+        table2.setRowHeight(30);
+        table2.getTableHeader().setReorderingAllowed(true);
+        table2.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                TableHeader header = new TableHeader(value + "");
+                if (column == nombreColumnas.length) {
+                    header.setHorizontalAlignment(JLabel.CENTER);
+                }
+                return header;
+            }
+        });
+        jScrollPane2.getViewport().setBackground(Color.WHITE);
+        jScrollPane2.setVerticalScrollBar(new ScrollBarCustom());
+        fixtable(jScrollPane2);
     }
 
-     public void fixtable(JScrollPane scroll) {
+    public void fixtable(JScrollPane scroll) {
         scroll.getViewport().setBackground(Color.WHITE);
         scroll.setVerticalScrollBar(new ScrollBarCustom());
         JPanel p = new JPanel();
@@ -77,40 +94,40 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jScrollPane2.setViewportView(table1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 400, 360));
 
         table2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jScrollPane1.setViewportView(table2);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 400, 360));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 270, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Proveedor");
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setText("Piezas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
 

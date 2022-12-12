@@ -4,8 +4,14 @@
  */
 package swing;
 
+import consultas.ConsultasGestion;
+import consultas.ConsultasPiezas;
+import hibernate.GestionEntity;
+import hibernate.PiezasEntity;
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
@@ -21,7 +28,7 @@ import table.TableHeader;
  * @author 9FDAM09
  */
 public class PanelGestionGlobal extends javax.swing.JPanel {
-    String[] nombreColumnas = {"Codigo", "Nombre", "Ciudad", "Estado"};
+    String[] nombreColumnas = {"Codigo", "Codigo Pieza", "Codigo Proveedor", "Codigo Proyecto"};
 
     /**
      * Creates new form VentanaGestionGlobal
@@ -46,14 +53,38 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane1.setVerticalScrollBar(new ScrollBarCustom());
         fixtable(jScrollPane1);
+        cargarDatos();
     }
 
-     public void fixtable(JScrollPane scroll) {
+    public void fixtable(JScrollPane scroll) {
         scroll.getViewport().setBackground(Color.WHITE);
         scroll.setVerticalScrollBar(new ScrollBarCustom());
         JPanel p = new JPanel();
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
         scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+    }
+     
+    public void cargarDatos() {
+        ConsultasGestion con = new ConsultasGestion();
+        List<GestionEntity> gestion = new ArrayList<GestionEntity>();
+        gestion = con.recuperarGestionGeneral();
+        int cantidad = gestion.size();
+        String[][] d = new String[cantidad][5];
+        for (int i = 0; i < gestion.size(); i++) {
+            d[i][0] = String.valueOf(gestion.get(i).getId());
+            d[i][1] = String.valueOf(gestion.get(i).getPiezasByCodpieza());
+            d[i][2] = String.valueOf(gestion.get(i).getProveedoresByCodproveedor());
+            d[i][3] = String.valueOf(gestion.get(i).getProyectosByCodproyecto());
+            d[i][4] = String.valueOf(gestion.get(i).getCantidad());
+        }
+        //se carga el modelo de la tabla
+        table1.setModel(new DefaultTableModel(d, nombreColumnas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        con.cerrarConexion();
     }
 
     /**
