@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
-        
         PanelMenuProveedores frame = new PanelMenuProveedores();
         frame.setSize(830,550);
         frame.setLocation(0,0);

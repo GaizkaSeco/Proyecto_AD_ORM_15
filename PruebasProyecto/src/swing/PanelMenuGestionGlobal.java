@@ -5,6 +5,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,7 +20,7 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     public PanelMenuGestionGlobal() {
         initComponents();
         
-        PanelGestionGlobal frame = new PanelGestionGlobal();
+        PanelGestionGlobal frame = new PanelGestionGlobal(content);
         frame.setSize(830,550);
         frame.setLocation(0,0);
         content.removeAll();
@@ -42,7 +44,9 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         botonSumiProveedores = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         botonSumiPiezas = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        botonEstadisticas = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,6 +54,11 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         panelMenuTop.setBackground(new java.awt.Color(114, 70, 124));
 
         botonRelacionar.setBackground(new java.awt.Color(198, 177, 201));
+        botonRelacionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonRelacionarMousePressed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,6 +76,11 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         );
 
         botonSumiProveedores.setBackground(new java.awt.Color(114, 70, 124));
+        botonSumiProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonSumiProveedoresMousePressed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -83,26 +97,48 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
+        botonSumiPiezas.setBackground(new java.awt.Color(114, 70, 124));
+        botonSumiPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonSumiPiezasMousePressed(evt);
+            }
+        });
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("<html><center>Suministros por piezas</center><html>");
+
         javax.swing.GroupLayout botonSumiPiezasLayout = new javax.swing.GroupLayout(botonSumiPiezas);
         botonSumiPiezas.setLayout(botonSumiPiezasLayout);
         botonSumiPiezasLayout.setHorizontalGroup(
             botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonSumiPiezasLayout.setVerticalGroup(
             botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
+        botonEstadisticas.setBackground(new java.awt.Color(114, 70, 124));
+        botonEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEstadisticasMousePressed(evt);
+            }
+        });
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("<html><center>Estadisticas</center><html>");
+
+        javax.swing.GroupLayout botonEstadisticasLayout = new javax.swing.GroupLayout(botonEstadisticas);
+        botonEstadisticas.setLayout(botonEstadisticasLayout);
+        botonEstadisticasLayout.setHorizontalGroup(
+            botonEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+        botonEstadisticasLayout.setVerticalGroup(
+            botonEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelMenuTopLayout = new javax.swing.GroupLayout(panelMenuTop);
@@ -116,7 +152,7 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonSumiPiezas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 192, Short.MAX_VALUE))
         );
         panelMenuTopLayout.setVerticalGroup(
@@ -126,7 +162,7 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
                     .addComponent(botonRelacionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonSumiProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonSumiPiezas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -146,17 +182,84 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 490));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonRelacionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRelacionarMousePressed
+        setColor(botonRelacionar);
+        resetColor(botonSumiProveedores);
+        resetColor(botonSumiPiezas);
+        resetColor(botonEstadisticas);
+        
+        PanelGestionGlobal frame = new PanelGestionGlobal(content);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonRelacionarMousePressed
+
+    private void botonSumiProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSumiProveedoresMousePressed
+        setColor(botonSumiProveedores);
+        resetColor(botonRelacionar);
+        resetColor(botonSumiPiezas);
+        resetColor(botonEstadisticas);
+        
+        PanelGestionGlobalProveedores frame = new PanelGestionGlobalProveedores(content);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonSumiProveedoresMousePressed
+
+    private void botonSumiPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSumiPiezasMousePressed
+        setColor(botonSumiPiezas);
+        resetColor(botonSumiProveedores);
+        resetColor(botonRelacionar);
+        resetColor(botonEstadisticas);
+        
+        PanelGestionGlobalPiezas frame = new PanelGestionGlobalPiezas(content);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonSumiPiezasMousePressed
+
+    private void botonEstadisticasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMousePressed
+        setColor(botonEstadisticas);
+        resetColor(botonSumiProveedores);
+        resetColor(botonSumiPiezas);
+        resetColor(botonRelacionar);
+        
+        PanelGestionProveedores frame = new PanelGestionProveedores(content);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_botonEstadisticasMousePressed
+
+    private void setColor(JPanel pane) {
+        pane.setBackground(new Color(198,177,201));
+    }
+    
+    private void resetColor(JPanel pane) {
+        pane.setBackground(new Color(114,70,124));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel botonEstadisticas;
     private javax.swing.JPanel botonRelacionar;
     private javax.swing.JPanel botonSumiPiezas;
     private javax.swing.JPanel botonSumiProveedores;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel panelMenuTop;
     // End of variables declaration//GEN-END:variables
 }
