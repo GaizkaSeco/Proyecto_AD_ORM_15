@@ -143,13 +143,10 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         jLabel10.setText("Codigo del proveedor:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 260, 30));
 
-        comboBoxPiezas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(comboBoxPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 350, -1));
 
-        comboBoxProveedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(comboBoxProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 350, -1));
 
-        comboBoxProyectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
 

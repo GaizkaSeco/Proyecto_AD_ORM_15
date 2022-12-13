@@ -64,7 +64,7 @@ public class ConsultasGestion {
         return true;
     }
 
-    public void eliminarGestion(String codigo) {
+    public void eliminarGestion(int codigo) {
         GestionEntity gestion = new GestionEntity();
         Transaction tx = session.beginTransaction();
         gestion = session.load(GestionEntity.class, codigo);

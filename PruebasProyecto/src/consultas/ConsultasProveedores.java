@@ -1,6 +1,7 @@
 package consultas;
 
 import hibernate.HibernateUtil;
+import hibernate.PiezasEntity;
 import hibernate.ProveedoresEntity;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
@@ -80,6 +81,13 @@ public class ConsultasProveedores {
             return false;
         }
         return true;
+    }
+
+    public List<ProveedoresEntity> cargarAltas() {
+        List<ProveedoresEntity> proveedores = new ArrayList<ProveedoresEntity>();
+        Query q = session.createQuery("from ProveedoresEntity where estado = 'alta'");
+        proveedores = q.list();
+        return proveedores;
     }
 
     public void bajaProveedor(String codigo) {

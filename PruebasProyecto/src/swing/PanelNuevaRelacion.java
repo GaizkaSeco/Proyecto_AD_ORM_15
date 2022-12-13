@@ -22,6 +22,7 @@ import javax.swing.JPanel;
  */
 public class PanelNuevaRelacion extends javax.swing.JPanel {
     JPanel content;
+    boolean anadir;
 
     /**
      * Creates new form PanelNuevaRelacion
@@ -31,22 +32,28 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         this.content = content;
 
         ConsultasProyectos consultasProyectos = new ConsultasProyectos();
-        List<ProyectosEntity> proyectos = consultasProyectos.recuperarProyectos();
+        List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
         consultasProyectos.cerrarConexion();
         ConsultasProveedores consultasProveedores = new ConsultasProveedores();
-        List<ProveedoresEntity> proveedores = consultasProveedores.recuperarProveedores();
+        List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
         consultasProveedores.cerrarConexion();
         ConsultasPiezas consultasPiezas = new ConsultasPiezas();
-        List<PiezasEntity> piezas = consultasPiezas.recuperarPiezas();
+        List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
         consultasPiezas.cerrarConexion();
-        for (ProyectosEntity proyecto : proyectos) {
-            comboBoxProyectos.addItem(proyecto.getCodproye());
-        }
-        for (PiezasEntity pieza : piezas) {
-            comboBoxPiezas.addItem(pieza.getCodpiezas());
-        }
-        for (ProveedoresEntity proveedor : proveedores) {
-            comboBoxProveedores.addItem(proveedor.getCodprov());
+        if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo, operacion de añadir bloqueada.");
+            anadir = false;
+        }else {
+            anadir = true;
+            for (ProyectosEntity proyecto : proyectos) {
+                comboBoxProyectos.addItem(proyecto.getCodproye());
+            }
+            for (PiezasEntity pieza : piezas) {
+                comboBoxPiezas.addItem(pieza.getCodpiezas());
+            }
+            for (ProveedoresEntity proveedor : proveedores) {
+                comboBoxProveedores.addItem(proveedor.getCodprov());
+            }
         }
     }
 
@@ -180,26 +187,30 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
-        try {
-            int cantidad = Integer.parseInt(cantidadField.getText());
-            ConsultasGestion con = new ConsultasGestion();
-            if (con.anadirRelacion(comboBoxProveedores.getSelectedItem().toString(), comboBoxPiezas.getSelectedItem().toString(), comboBoxProyectos.getSelectedItem().toString(), cantidad)) {
-                con.cerrarConexion();
-                PanelGestionGlobal frame = new PanelGestionGlobal(content);
-                frame.setSize(830, 490);
-                frame.setLocation(0, 0);
-                content.removeAll();
-                content.add(frame, BorderLayout.CENTER);
-                content.revalidate();
-                content.repaint();
+        if (anadir) {
+            try {
+                int cantidad = Integer.parseInt(cantidadField.getText());
+                ConsultasGestion con = new ConsultasGestion();
+                if (con.anadirRelacion(comboBoxProveedores.getSelectedItem().toString(), comboBoxPiezas.getSelectedItem().toString(), comboBoxProyectos.getSelectedItem().toString(), cantidad)) {
+                    con.cerrarConexion();
+                    PanelGestionGlobal frame = new PanelGestionGlobal(content);
+                    frame.setSize(830, 490);
+                    frame.setLocation(0, 0);
+                    content.removeAll();
+                    content.add(frame, BorderLayout.CENTER);
+                    content.revalidate();
+                    content.repaint();
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "La cantidad esta mal escrita.");
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "La cantidad esta mal escrita.");
+        } else {
+            JOptionPane.showMessageDialog(null, "La opcion no esta disponible por que no cumples los requesitos.");
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 
     private void botonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCancelarMousePressed
-        PanelGestionProyectos frame = new PanelGestionProyectos(content);
+        PanelGestionGlobal frame = new PanelGestionGlobal(content);
         frame.setSize(830, 490);
         frame.setLocation(0, 0);
         content.removeAll();

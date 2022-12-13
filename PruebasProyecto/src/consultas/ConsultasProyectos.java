@@ -81,6 +81,13 @@ public class ConsultasProyectos {
         return true;
     }
 
+    public List<ProyectosEntity> cargarAltas() {
+        List<ProyectosEntity> proyectos = new ArrayList<ProyectosEntity>();
+        Query q = session.createQuery("from ProyectosEntity where estado = 'alta'");
+        proyectos = q.list();
+        return proyectos;
+    }
+
     public void bajaProyecto(String codigo) {
         ProyectosEntity pieza = new ProyectosEntity();
         Transaction tx = session.beginTransaction();

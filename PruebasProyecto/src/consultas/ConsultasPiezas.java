@@ -64,6 +64,13 @@ public class ConsultasPiezas {
         return pieza;
     }
 
+    public List<PiezasEntity> cargarAltas() {
+        List<PiezasEntity> piezas = new ArrayList<PiezasEntity>();
+        Query q = session.createQuery("from PiezasEntity where estado = 'alta'");
+        piezas = q.list();
+        return piezas;
+    }
+
     public boolean editarPieza(String codigo, String nombre, float precio, String descripcion, String estado) {
         PiezasEntity pieza = new PiezasEntity();
         Transaction tx = session.beginTransaction();

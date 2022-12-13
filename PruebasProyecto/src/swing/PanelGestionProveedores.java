@@ -74,8 +74,8 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             d[i][0] = String.valueOf(proveedores.get(i).getCodprov());
             d[i][1] = String.valueOf(proveedores.get(i).getNombre());
             d[i][2] = String.valueOf(proveedores.get(i).getApellidos());
-            d[i][3] = String.valueOf(proveedores.get(i).getEstado());
-            d[i][4] = String.valueOf(proveedores.get(i).getDireccion());
+            d[i][3] = String.valueOf(proveedores.get(i).getDireccion());
+            d[i][4] = String.valueOf(proveedores.get(i).getEstado());
         }
         //se carga el modelo de la tabla
         table1.setModel(new DefaultTableModel(d, nombreColumnas) {

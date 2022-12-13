@@ -28,7 +28,7 @@ import table.TableHeader;
  * @author 9FDAM09
  */
 public class PanelGestionGlobal extends javax.swing.JPanel {
-    String[] nombreColumnas = {"Codigo", "Codigo Pieza", "Codigo Proveedor", "Codigo Proyecto"};
+    String[] nombreColumnas = {"Codigo", "Codigo Pieza", "Codigo Proveedor", "Codigo Proyecto", "Cantidad", "Estado"};
     JPanel content;
 
     /**
@@ -71,13 +71,14 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         List<GestionEntity> gestion = new ArrayList<GestionEntity>();
         gestion = con.recuperarGestionGeneral();
         int cantidad = gestion.size();
-        String[][] d = new String[cantidad][5];
+        String[][] d = new String[cantidad][6];
         for (int i = 0; i < gestion.size(); i++) {
             d[i][0] = String.valueOf(gestion.get(i).getId());
             d[i][1] = String.valueOf(gestion.get(i).getPiezasByCodpieza().getCodpiezas());
             d[i][2] = String.valueOf(gestion.get(i).getProveedoresByCodproveedor().getCodprov());
             d[i][3] = String.valueOf(gestion.get(i).getProyectosByCodproyecto().getCodproye());
             d[i][4] = String.valueOf(gestion.get(i).getCantidad());
+            d[i][5] = String.valueOf(gestion.get(i).getEstado());
         }
         //se carga el modelo de la tabla
         table1.setModel(new DefaultTableModel(d, nombreColumnas) {
@@ -221,9 +222,11 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Para dar de baja debes haber seleccionado algun dato en la tabla.");
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
-            String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
+            int codigo = Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 0).toString());
             con.eliminarGestion(codigo);
+            con.cerrarConexion();
         }
+        cargarDatos();
     }//GEN-LAST:event_botonEliminarMousePressed
 
 
