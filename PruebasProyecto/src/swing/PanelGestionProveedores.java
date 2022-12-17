@@ -120,7 +120,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         botonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 403));
@@ -149,6 +149,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 490));
 
+        botonBaja.setBackground(new java.awt.Color(57, 57, 58));
         botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonBajaMousePressed(evt);
@@ -156,6 +157,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(219, 219, 219));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Dar de baja");
 
@@ -172,6 +174,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
 
         add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 155, -1));
 
+        botonEditar.setBackground(new java.awt.Color(57, 57, 58));
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonEditarMousePressed(evt);
@@ -179,6 +182,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(219, 219, 219));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Editar");
 

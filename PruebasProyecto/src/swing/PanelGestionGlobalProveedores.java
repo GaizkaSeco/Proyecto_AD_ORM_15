@@ -145,7 +145,7 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         tableProyectos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
@@ -186,6 +186,7 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 400, 360));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Proveedor");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
     }// </editor-fold>//GEN-END:initComponents

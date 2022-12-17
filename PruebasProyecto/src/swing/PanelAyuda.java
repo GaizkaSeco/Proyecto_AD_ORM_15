@@ -28,7 +28,7 @@ public class PanelAyuda extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Panel de ayuda");

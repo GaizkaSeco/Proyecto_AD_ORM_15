@@ -6,7 +6,7 @@ package swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -39,19 +39,19 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
 
         panelMenuTop = new javax.swing.JPanel();
         botonGestionPiezas = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        labelGestion = new javax.swing.JLabel();
         botonNuevaPieza = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelAnadir = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(830, 550));
         setPreferredSize(new java.awt.Dimension(830, 550));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMenuTop.setBackground(new java.awt.Color(114, 70, 124));
+        panelMenuTop.setBackground(new java.awt.Color(57, 57, 58));
         panelMenuTop.setPreferredSize(new java.awt.Dimension(830, 60));
 
-        botonGestionPiezas.setBackground(new java.awt.Color(198, 177, 201));
+        botonGestionPiezas.setBackground(new java.awt.Color(204, 204, 204));
         botonGestionPiezas.setPreferredSize(new java.awt.Dimension(155, 60));
         botonGestionPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -59,8 +59,8 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Gestion de piezas");
+        labelGestion.setForeground(new java.awt.Color(0, 0, 0));
+        labelGestion.setText("Gestion de piezas");
 
         javax.swing.GroupLayout botonGestionPiezasLayout = new javax.swing.GroupLayout(botonGestionPiezas);
         botonGestionPiezas.setLayout(botonGestionPiezasLayout);
@@ -68,18 +68,18 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
             botonGestionPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonGestionPiezasLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel2)
+                .addComponent(labelGestion)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         botonGestionPiezasLayout.setVerticalGroup(
             botonGestionPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonGestionPiezasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2)
+                .addComponent(labelGestion)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        botonNuevaPieza.setBackground(new java.awt.Color(114, 70, 124));
+        botonNuevaPieza.setBackground(new java.awt.Color(57, 57, 58));
         botonNuevaPieza.setPreferredSize(new java.awt.Dimension(155, 60));
         botonNuevaPieza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -87,8 +87,8 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Añadir Pieza");
+        labelAnadir.setForeground(new java.awt.Color(219, 219, 219));
+        labelAnadir.setText("Añadir Pieza");
 
         javax.swing.GroupLayout botonNuevaPiezaLayout = new javax.swing.GroupLayout(botonNuevaPieza);
         botonNuevaPieza.setLayout(botonNuevaPiezaLayout);
@@ -96,14 +96,14 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
             botonNuevaPiezaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonNuevaPiezaLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel1)
+                .addComponent(labelAnadir)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         botonNuevaPiezaLayout.setVerticalGroup(
             botonNuevaPiezaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonNuevaPiezaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(labelAnadir)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -143,8 +143,8 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGestionPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGestionPiezasMousePressed
-        setColor(botonGestionPiezas);
-        resetColor(botonNuevaPieza);
+        setColor(botonGestionPiezas, labelGestion);
+        resetColor(botonNuevaPieza, labelAnadir);
                 
         PanelGestionPiezas frame = new PanelGestionPiezas(content);
         frame.setSize(830,490);
@@ -156,8 +156,8 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGestionPiezasMousePressed
 
     private void botonNuevaPiezaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevaPiezaMousePressed
-        setColor(botonNuevaPieza);
-        resetColor(botonGestionPiezas);
+        setColor(botonNuevaPieza, labelAnadir);
+        resetColor(botonGestionPiezas, labelGestion);
                 
         PanelNuevaPieza frame = new PanelNuevaPieza(content);
         frame.setSize(830,490);
@@ -168,20 +168,22 @@ public class PanelMenuPiezas extends javax.swing.JPanel {
         content.repaint();
     }//GEN-LAST:event_botonNuevaPiezaMousePressed
 
-    private void setColor(JPanel pane) {
-        pane.setBackground(new Color(198,177,201));
+    private void setColor(JPanel pane, JLabel texto) {
+        pane.setBackground(new Color(204,204,204));
+        texto.setForeground(new Color(0,0,0));
     }
     
-    private void resetColor(JPanel pane) {
-        pane.setBackground(new Color(114,70,124));
+    private void resetColor(JPanel pane, JLabel texto) {
+        pane.setBackground(new Color(57,57,58));
+        texto.setForeground(new Color(219,219,219));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonGestionPiezas;
     private javax.swing.JPanel botonNuevaPieza;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelAnadir;
+    private javax.swing.JLabel labelGestion;
     private javax.swing.JPanel panelMenuTop;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,7 +6,7 @@ package swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -40,105 +40,105 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
 
         panelMenuTop = new javax.swing.JPanel();
         botonRelacionar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelPpp = new javax.swing.JLabel();
         botonSumiProveedores = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        labelProveedor = new javax.swing.JLabel();
         botonSumiPiezas = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        labelPieza = new javax.swing.JLabel();
         botonEstadisticas = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        labelEstadisticas = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMenuTop.setBackground(new java.awt.Color(114, 70, 124));
+        panelMenuTop.setBackground(new java.awt.Color(57, 57, 58));
 
-        botonRelacionar.setBackground(new java.awt.Color(198, 177, 201));
+        botonRelacionar.setBackground(new java.awt.Color(204, 204, 204));
         botonRelacionar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonRelacionarMousePressed(evt);
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Piezas, Proveedores y Proyectos</center></html>");
+        labelPpp.setForeground(new java.awt.Color(0, 0, 0));
+        labelPpp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPpp.setText("<html><center>Piezas, Proveedores y Proyectos</center></html>");
 
         javax.swing.GroupLayout botonRelacionarLayout = new javax.swing.GroupLayout(botonRelacionar);
         botonRelacionar.setLayout(botonRelacionarLayout);
         botonRelacionarLayout.setHorizontalGroup(
             botonRelacionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(labelPpp, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonRelacionarLayout.setVerticalGroup(
             botonRelacionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(labelPpp, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        botonSumiProveedores.setBackground(new java.awt.Color(114, 70, 124));
+        botonSumiProveedores.setBackground(new java.awt.Color(57, 57, 58));
         botonSumiProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonSumiProveedoresMousePressed(evt);
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("<html><center>Suministros por proveedores</center><html>");
+        labelProveedor.setForeground(new java.awt.Color(219, 219, 219));
+        labelProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelProveedor.setText("<html><center>Suministros por proveedores</center><html>");
 
         javax.swing.GroupLayout botonSumiProveedoresLayout = new javax.swing.GroupLayout(botonSumiProveedores);
         botonSumiProveedores.setLayout(botonSumiProveedoresLayout);
         botonSumiProveedoresLayout.setHorizontalGroup(
             botonSumiProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(labelProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonSumiProveedoresLayout.setVerticalGroup(
             botonSumiProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(labelProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        botonSumiPiezas.setBackground(new java.awt.Color(114, 70, 124));
+        botonSumiPiezas.setBackground(new java.awt.Color(57, 57, 58));
         botonSumiPiezas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonSumiPiezasMousePressed(evt);
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("<html><center>Suministros por piezas</center><html>");
+        labelPieza.setForeground(new java.awt.Color(219, 219, 219));
+        labelPieza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPieza.setText("<html><center>Suministros por piezas</center><html>");
 
         javax.swing.GroupLayout botonSumiPiezasLayout = new javax.swing.GroupLayout(botonSumiPiezas);
         botonSumiPiezas.setLayout(botonSumiPiezasLayout);
         botonSumiPiezasLayout.setHorizontalGroup(
             botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(labelPieza, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonSumiPiezasLayout.setVerticalGroup(
             botonSumiPiezasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(labelPieza, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        botonEstadisticas.setBackground(new java.awt.Color(114, 70, 124));
+        botonEstadisticas.setBackground(new java.awt.Color(57, 57, 58));
         botonEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonEstadisticasMousePressed(evt);
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("<html><center>Estadisticas</center><html>");
+        labelEstadisticas.setForeground(new java.awt.Color(219, 219, 219));
+        labelEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEstadisticas.setText("<html><center>Estadisticas</center><html>");
 
         javax.swing.GroupLayout botonEstadisticasLayout = new javax.swing.GroupLayout(botonEstadisticas);
         botonEstadisticas.setLayout(botonEstadisticasLayout);
         botonEstadisticasLayout.setHorizontalGroup(
             botonEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(labelEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonEstadisticasLayout.setVerticalGroup(
             botonEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(labelEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelMenuTopLayout = new javax.swing.GroupLayout(panelMenuTop);
@@ -183,10 +183,10 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRelacionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRelacionarMousePressed
-        setColor(botonRelacionar);
-        resetColor(botonSumiProveedores);
-        resetColor(botonSumiPiezas);
-        resetColor(botonEstadisticas);
+        setColor(botonRelacionar, labelPpp);
+        resetColor(botonSumiProveedores, labelProveedor);
+        resetColor(botonSumiPiezas, labelPieza);
+        resetColor(botonEstadisticas, labelEstadisticas);
         
         PanelGestionGlobal frame = new PanelGestionGlobal(content);
         frame.setSize(830,490);
@@ -198,10 +198,10 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     }//GEN-LAST:event_botonRelacionarMousePressed
 
     private void botonSumiProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSumiProveedoresMousePressed
-        setColor(botonSumiProveedores);
-        resetColor(botonRelacionar);
-        resetColor(botonSumiPiezas);
-        resetColor(botonEstadisticas);
+        setColor(botonSumiProveedores, labelProveedor);
+        resetColor(botonRelacionar, labelPpp);
+        resetColor(botonSumiPiezas, labelPieza);
+        resetColor(botonEstadisticas, labelEstadisticas);
         
         PanelGestionGlobalProveedores frame = new PanelGestionGlobalProveedores(content);
         frame.setSize(830,490);
@@ -213,10 +213,10 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     }//GEN-LAST:event_botonSumiProveedoresMousePressed
 
     private void botonSumiPiezasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSumiPiezasMousePressed
-        setColor(botonSumiPiezas);
-        resetColor(botonSumiProveedores);
-        resetColor(botonRelacionar);
-        resetColor(botonEstadisticas);
+        setColor(botonSumiPiezas, labelPieza);
+        resetColor(botonSumiProveedores, labelProveedor);
+        resetColor(botonRelacionar, labelPpp);
+        resetColor(botonEstadisticas, labelEstadisticas);
         
         PanelGestionGlobalPiezas frame = new PanelGestionGlobalPiezas(content);
         frame.setSize(830,490);
@@ -228,10 +228,10 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     }//GEN-LAST:event_botonSumiPiezasMousePressed
 
     private void botonEstadisticasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMousePressed
-        setColor(botonEstadisticas);
-        resetColor(botonSumiProveedores);
-        resetColor(botonSumiPiezas);
-        resetColor(botonRelacionar);
+        setColor(botonEstadisticas, labelEstadisticas);
+        resetColor(botonSumiProveedores, labelProveedor);
+        resetColor(botonSumiPiezas, labelPieza);
+        resetColor(botonRelacionar, labelPpp);
         
         PanelGestionProveedores frame = new PanelGestionProveedores(content);
         frame.setSize(830,490);
@@ -242,12 +242,14 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         content.repaint();
     }//GEN-LAST:event_botonEstadisticasMousePressed
 
-    private void setColor(JPanel pane) {
-        pane.setBackground(new Color(198,177,201));
+    private void setColor(JPanel pane, JLabel texto) {
+        pane.setBackground(new Color(204,204,204));
+        texto.setForeground(new Color(0,0,0));
     }
-    
-    private void resetColor(JPanel pane) {
-        pane.setBackground(new Color(114,70,124));
+
+    private void resetColor(JPanel pane, JLabel texto) {
+        pane.setBackground(new Color(57,57,58));
+        texto.setForeground(new Color(219,219,219));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -256,10 +258,10 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
     private javax.swing.JPanel botonSumiPiezas;
     private javax.swing.JPanel botonSumiProveedores;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel labelEstadisticas;
+    private javax.swing.JLabel labelPieza;
+    private javax.swing.JLabel labelPpp;
+    private javax.swing.JLabel labelProveedor;
     private javax.swing.JPanel panelMenuTop;
     // End of variables declaration//GEN-END:variables
 }

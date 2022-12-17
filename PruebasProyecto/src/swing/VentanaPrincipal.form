@@ -29,7 +29,7 @@
     <Container class="javax.swing.JPanel" name="panelMenu">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="7c" green="46" red="72" type="rgb"/>
+          <Color blue="3a" green="39" red="39" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -45,7 +45,7 @@
         <Container class="javax.swing.JPanel" name="botonSalir">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="46" red="72" type="rgb"/>
+              <Color blue="3a" green="39" red="39" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -63,7 +63,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordeSalir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="labelBoton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelSalir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="66" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -72,7 +72,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="labelBoton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelSalir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
                   <Component id="bordeSalir" alignment="1" pref="53" max="32767" attributes="0"/>
@@ -83,7 +83,7 @@
             <Container class="javax.swing.JPanel" name="bordeSalir">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="46" red="72" type="rgb"/>
+                  <Color blue="3a" green="39" red="39" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[5, 0]"/>
@@ -103,13 +103,13 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="labelBoton1">
+            <Component class="javax.swing.JLabel" name="labelSalir">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="db" green="db" red="db" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
@@ -119,7 +119,7 @@
         <Container class="javax.swing.JPanel" name="botonProveedores">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c9" green="b1" red="c6" type="rgb"/>
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -137,7 +137,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordeProveedor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelBoton6" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelProveedores" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="66" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -146,7 +146,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="labelBoton6" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelProveedores" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
                   <Component id="bordeProveedor" alignment="1" pref="53" max="32767" attributes="0"/>
@@ -154,7 +154,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="labelBoton6">
+            <Component class="javax.swing.JLabel" name="labelProveedores">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
@@ -193,7 +193,7 @@
         <Container class="javax.swing.JPanel" name="botonPiezas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="46" red="72" type="rgb"/>
+              <Color blue="3a" green="39" red="39" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -211,7 +211,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordePiezas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelBoton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelPiezas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="106" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -221,7 +221,7 @@
                   <Component id="bordePiezas" alignment="1" pref="50" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="labelBoton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelPiezas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -231,7 +231,7 @@
             <Container class="javax.swing.JPanel" name="bordePiezas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="46" red="72" type="rgb"/>
+                  <Color blue="3a" green="39" red="39" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[5, 0]"/>
@@ -251,13 +251,13 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="labelBoton2">
+            <Component class="javax.swing.JLabel" name="labelPiezas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="db" green="db" red="db" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Piezas"/>
               </Properties>
@@ -267,7 +267,7 @@
         <Container class="javax.swing.JPanel" name="botonAyuda">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="46" red="72" type="rgb"/>
+              <Color blue="3a" green="39" red="39" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -285,7 +285,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordeAyuda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelBoton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelAyuda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="107" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -295,7 +295,7 @@
                   <Component id="bordeAyuda" alignment="1" pref="50" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="labelBoton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelAyuda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -305,7 +305,7 @@
             <Container class="javax.swing.JPanel" name="bordeAyuda">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="46" red="72" type="rgb"/>
+                  <Color blue="3a" green="39" red="39" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[5, 0]"/>
@@ -325,13 +325,13 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="labelBoton3">
+            <Component class="javax.swing.JLabel" name="labelAyuda">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="db" green="db" red="db" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ayuda"/>
               </Properties>
@@ -341,7 +341,7 @@
         <Container class="javax.swing.JPanel" name="botonGestion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="46" red="72" type="rgb"/>
+              <Color blue="3a" green="39" red="39" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -359,7 +359,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordeGestion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelBoton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelGestion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -369,7 +369,7 @@
                   <Component id="bordeGestion" alignment="1" pref="50" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="labelBoton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelGestion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -379,7 +379,7 @@
             <Container class="javax.swing.JPanel" name="bordeGestion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="46" red="72" type="rgb"/>
+                  <Color blue="3a" green="39" red="39" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[5, 0]"/>
@@ -399,13 +399,13 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="labelBoton4">
+            <Component class="javax.swing.JLabel" name="labelGestion">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="db" green="db" red="db" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestion Global"/>
               </Properties>
@@ -415,7 +415,7 @@
         <Container class="javax.swing.JPanel" name="botonProyectos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="46" red="72" type="rgb"/>
+              <Color blue="3a" green="39" red="39" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -433,7 +433,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bordeProyectos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelBoton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelProyectos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="84" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -443,7 +443,7 @@
                   <Component id="bordeProyectos" alignment="1" pref="50" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="labelBoton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelProyectos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -453,7 +453,7 @@
             <Container class="javax.swing.JPanel" name="bordeProyectos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="46" red="72" type="rgb"/>
+                  <Color blue="3a" green="39" red="39" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[5, 0]"/>
@@ -473,13 +473,13 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="labelBoton5">
+            <Component class="javax.swing.JLabel" name="labelProyectos">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="db" green="db" red="db" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Proyectos"/>
               </Properties>

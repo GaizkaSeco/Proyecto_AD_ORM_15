@@ -68,17 +68,17 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         codigoField = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(830, 490));
         setPreferredSize(new java.awt.Dimension(830, 490));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre: ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 70, 30));
 
-        nombreField.setBackground(new java.awt.Color(142, 105, 149));
+        nombreField.setBackground(new java.awt.Color(204, 204, 204));
         nombreField.setForeground(new java.awt.Color(204, 204, 204));
         nombreField.setBorder(null);
         nombreField.addActionListener(new java.awt.event.ActionListener() {
@@ -89,13 +89,13 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("NUEVA PIEZA");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 830, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 350, -1));
 
-        precioField.setBackground(new java.awt.Color(142, 105, 149));
+        precioField.setBackground(new java.awt.Color(204, 204, 204));
         precioField.setForeground(new java.awt.Color(204, 204, 204));
         precioField.setBorder(null);
         precioField.addActionListener(new java.awt.event.ActionListener() {
@@ -106,12 +106,12 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(precioField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Precio: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 70, 30));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 350, -1));
 
-        descripcionField.setBackground(new java.awt.Color(142, 105, 149));
+        descripcionField.setBackground(new java.awt.Color(204, 204, 204));
         descripcionField.setForeground(new java.awt.Color(204, 204, 204));
         descripcionField.setBorder(null);
         descripcionField.addActionListener(new java.awt.event.ActionListener() {
@@ -122,12 +122,12 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(descripcionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Descripcion: ");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 100, 30));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 330, -1));
 
-        botonAnadir.setBackground(new java.awt.Color(198, 177, 201));
+        botonAnadir.setBackground(new java.awt.Color(57, 57, 58));
         botonAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonAnadirMousePressed(evt);
@@ -135,7 +135,7 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setForeground(new java.awt.Color(219, 219, 219));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("AÑADIR PIEZA");
 
@@ -155,11 +155,11 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 160, 50));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Codigo: ");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 70, 30));
 
-        codigoField.setBackground(new java.awt.Color(142, 105, 149));
+        codigoField.setBackground(new java.awt.Color(204, 204, 204));
         codigoField.setForeground(new java.awt.Color(204, 204, 204));
         codigoField.setBorder(null);
         codigoField.addActionListener(new java.awt.event.ActionListener() {

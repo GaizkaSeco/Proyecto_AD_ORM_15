@@ -6,7 +6,7 @@ package swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -40,62 +40,62 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
 
         panelMenuTop = new javax.swing.JPanel();
         botonNuevoProyecto = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        labelAnadir = new javax.swing.JLabel();
         botonGestionProyectos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelGestion = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMenuTop.setBackground(new java.awt.Color(114, 70, 124));
+        panelMenuTop.setBackground(new java.awt.Color(57, 57, 58));
         panelMenuTop.setMinimumSize(new java.awt.Dimension(830, 60));
 
-        botonNuevoProyecto.setBackground(new java.awt.Color(114, 70, 124));
+        botonNuevoProyecto.setBackground(new java.awt.Color(57, 57, 58));
         botonNuevoProyecto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonNuevoProyectoMousePressed(evt);
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nuevo Proyecto");
+        labelAnadir.setForeground(new java.awt.Color(219, 219, 219));
+        labelAnadir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAnadir.setText("Nuevo Proyecto");
 
         javax.swing.GroupLayout botonNuevoProyectoLayout = new javax.swing.GroupLayout(botonNuevoProyecto);
         botonNuevoProyecto.setLayout(botonNuevoProyectoLayout);
         botonNuevoProyectoLayout.setHorizontalGroup(
             botonNuevoProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonNuevoProyectoLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(labelAnadir, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addContainerGap())
         );
         botonNuevoProyectoLayout.setVerticalGroup(
             botonNuevoProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonNuevoProyectoLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        botonGestionProyectos.setBackground(new java.awt.Color(198, 177, 201));
+        botonGestionProyectos.setBackground(new java.awt.Color(204, 204, 204));
         botonGestionProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonGestionProyectosMousePressed(evt);
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestion de Proyectos");
+        labelGestion.setForeground(new java.awt.Color(0, 0, 0));
+        labelGestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelGestion.setText("Gestion de Proyectos");
 
         javax.swing.GroupLayout botonGestionProyectosLayout = new javax.swing.GroupLayout(botonGestionProyectos);
         botonGestionProyectos.setLayout(botonGestionProyectosLayout);
         botonGestionProyectosLayout.setHorizontalGroup(
             botonGestionProyectosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(labelGestion, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
         );
         botonGestionProyectosLayout.setVerticalGroup(
             botonGestionProyectosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(labelGestion, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelMenuTopLayout = new javax.swing.GroupLayout(panelMenuTop);
@@ -134,8 +134,8 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGestionProyectosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGestionProyectosMousePressed
-        setColor(botonGestionProyectos);
-        resetColor(botonNuevoProyecto);
+        setColor(botonGestionProyectos, labelGestion);
+        resetColor(botonNuevoProyecto, labelAnadir);
         
         PanelGestionProyectos frame = new PanelGestionProyectos(content);
         frame.setSize(830,490);
@@ -147,8 +147,8 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_botonGestionProyectosMousePressed
 
     private void botonNuevoProyectoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoProyectoMousePressed
-        setColor(botonNuevoProyecto);
-        resetColor(botonGestionProyectos);
+        setColor(botonNuevoProyecto, labelAnadir);
+        resetColor(botonGestionProyectos, labelGestion);
         
         PanelNuevoProyecto frame = new PanelNuevoProyecto(content);
         frame.setSize(830,490);
@@ -159,20 +159,22 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
         content.repaint();
     }//GEN-LAST:event_botonNuevoProyectoMousePressed
 
-    private void setColor(JPanel pane) {
-        pane.setBackground(new Color(198,177,201));
+    private void setColor(JPanel pane, JLabel txto) {
+        pane.setBackground(new Color(204,204,204));
+        txto.setForeground(new Color(0,0,0));
     }
     
-    private void resetColor(JPanel pane) {
-        pane.setBackground(new Color(114,70,124));
+    private void resetColor(JPanel pane, JLabel texto) {
+        pane.setBackground(new Color(57,57,58));
+        texto.setForeground(new Color(219,219,219));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonGestionProyectos;
     private javax.swing.JPanel botonNuevoProyecto;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelAnadir;
+    private javax.swing.JLabel labelGestion;
     private javax.swing.JPanel panelMenuTop;
     // End of variables declaration//GEN-END:variables
 }

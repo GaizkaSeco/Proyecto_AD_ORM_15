@@ -66,15 +66,15 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         codigoField = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(142, 105, 149));
+        setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre: ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 70, 30));
 
-        nombreField.setBackground(new java.awt.Color(142, 105, 149));
+        nombreField.setBackground(new java.awt.Color(204, 204, 204));
         nombreField.setForeground(new java.awt.Color(204, 204, 204));
         nombreField.setBorder(null);
         nombreField.addActionListener(new java.awt.event.ActionListener() {
@@ -85,13 +85,13 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("NUEVO PROYECTO");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 830, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 350, -1));
 
-        ciudadField.setBackground(new java.awt.Color(142, 105, 149));
+        ciudadField.setBackground(new java.awt.Color(204, 204, 204));
         ciudadField.setForeground(new java.awt.Color(204, 204, 204));
         ciudadField.setBorder(null);
         ciudadField.addActionListener(new java.awt.event.ActionListener() {
@@ -102,12 +102,12 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         add(ciudadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 360, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Ciudad:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 70, 30));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 360, -1));
 
-        botonAnadir.setBackground(new java.awt.Color(198, 177, 201));
+        botonAnadir.setBackground(new java.awt.Color(57, 57, 58));
         botonAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonAnadirMousePressed(evt);
@@ -115,7 +115,7 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setForeground(new java.awt.Color(219, 219, 219));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("AÑADIR PROYECTO");
 
@@ -135,11 +135,11 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 160, 50));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Codigo:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 70, 30));
 
-        codigoField.setBackground(new java.awt.Color(142, 105, 149));
+        codigoField.setBackground(new java.awt.Color(204, 204, 204));
         codigoField.setForeground(new java.awt.Color(204, 204, 204));
         codigoField.setBorder(null);
         codigoField.addActionListener(new java.awt.event.ActionListener() {
