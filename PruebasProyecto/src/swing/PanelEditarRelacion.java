@@ -74,6 +74,11 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         comboBoxPiezas.setSelectedIndex(piezaSele);
         jComboBox1.addItem("Alta");
         jComboBox1.addItem("Baja");
+        if (relacion.getEstado().equals("alta")) {
+            jComboBox1.setSelectedIndex(0);
+        } else {
+            jComboBox1.setSelectedIndex(1);
+        }
     }
 
     /**
