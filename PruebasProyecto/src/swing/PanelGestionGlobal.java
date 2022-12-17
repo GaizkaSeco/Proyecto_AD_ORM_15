@@ -6,6 +6,8 @@ package swing;
 
 import consultas.ConsultasGestion;
 import consultas.ConsultasPiezas;
+import consultas.ConsultasProveedores;
+import consultas.ConsultasProyectos;
 import hibernate.GestionEntity;
 import hibernate.PiezasEntity;
 
@@ -21,6 +23,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import hibernate.ProveedoresEntity;
+import hibernate.ProyectosEntity;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
 
@@ -91,13 +95,55 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
     }
 
     public void editarRelacion(String codigo) {
-        PanelEditarRelacion frame = new PanelEditarRelacion(content, codigo);
-        frame.setSize(830,490);
-        frame.setLocation(0,0);
-        content.removeAll();
-        content.add(frame, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        if (puedeEditar(codigo)) {
+            PanelEditarRelacion frame = new PanelEditarRelacion(content, codigo);
+            frame.setSize(830, 490);
+            frame.setLocation(0, 0);
+            content.removeAll();
+            content.add(frame, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }
+    }
+
+    public boolean puedeEditar(String codigo) {
+        ConsultasGestion con = new ConsultasGestion();
+        GestionEntity relacion = con.cargarDatoConcreto(codigo);
+        ConsultasProyectos consultasProyectos = new ConsultasProyectos();
+        List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
+        consultasProyectos.cerrarConexion();
+        ConsultasProveedores consultasProveedores = new ConsultasProveedores();
+        List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
+        consultasProveedores.cerrarConexion();
+        ConsultasPiezas consultasPiezas = new ConsultasPiezas();
+        List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
+        if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo, operacion de editar denegada.");
+            return false;
+        }
+        int proyectoSele = -1;
+        int proveSele = -1;
+        int piezaSele = -1;
+        for (int i = 0; i < proyectos.size(); i++) {
+            if (proyectos.get(i).getCodproye().equals(relacion.getProyectosByCodproyecto().getCodproye())) {
+                proyectoSele = i;
+            }
+        }
+        for (int i = 0; i < proveedores.size(); i++) {
+            if (proveedores.get(i).getCodprov().equals(relacion.getProveedoresByCodproveedor().getCodprov())) {
+                proveSele = i;
+            }
+        }
+        for (int i = 0; i < piezas.size(); i++) {
+            if (piezas.get(i).getCodpiezas().equals(relacion.getPiezasByCodpieza().getCodpiezas())) {
+                piezaSele = i;
+            }
+        }
+        if (proyectoSele == -1 || proveSele == -1 || piezaSele == -1) {
+            JOptionPane.showMessageDialog(null, "Uno de los campos tiene el estado de baja y no se puede editar la relacion, si quiere editarlo da de alta el campo.");
+            return false;
+        }
+        return true;
     }
     
     /**

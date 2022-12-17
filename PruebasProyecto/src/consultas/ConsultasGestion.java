@@ -33,6 +33,46 @@ public class ConsultasGestion {
         return gestion;
     }
 
+    public boolean editarRelacion(String codigo, String codprove, String codpieza, String codproye, int cantidad, String estado, List<PiezasEntity> piezas, List<ProyectosEntity> proyectos, List<ProveedoresEntity> proveedores) {
+        try {
+            PiezasEntity pieza;
+            pieza = null;
+            ProveedoresEntity proveedor = null;
+            ProyectosEntity proyecto = null;
+            for (PiezasEntity piezasEntity : piezas) {
+                if (piezasEntity.getCodpiezas().equals(codpieza)) {
+                    pieza = piezasEntity;
+                }
+            }
+            for (ProveedoresEntity proveedore : proveedores) {
+                if (proveedore.getCodprov().equals(codprove)) {
+                    proveedor = proveedore;
+                }
+            }
+            for (ProyectosEntity proyectosEntity : proyectos) {
+                if (proyectosEntity.getCodproye().equals(codproye)) {
+                    proyecto = proyectosEntity;
+                }
+            }
+            Transaction tx = session.beginTransaction();
+            GestionEntity gestion = new GestionEntity();
+            gestion.setId(Integer.parseInt(codigo));
+            gestion.setPiezasByCodpieza(pieza);
+            gestion.setProveedoresByCodproveedor(proveedor);
+            gestion.setProyectosByCodproyecto(proyecto);
+            gestion.setCantidad(cantidad);
+            gestion.setEstado(estado);
+            session.update(gestion);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "La relacion se ha editado correctamente.");
+        } catch (PersistenceException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error y no se ha podido editar la nueva relacion comprueba que los datos son correctos.");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public boolean anadirRelacion(String codprove, String codpieza, String codproye, int cantidad) {
         try {
             ConsultasPiezas consultasPiezas = new ConsultasPiezas();
