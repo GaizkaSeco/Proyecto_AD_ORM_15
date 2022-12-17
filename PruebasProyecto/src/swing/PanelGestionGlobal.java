@@ -90,6 +90,16 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         con.cerrarConexion();
     }
 
+    public void editarRelacion(String codigo) {
+        PanelEditarRelacion frame = new PanelEditarRelacion(content, codigo);
+        frame.setSize(830,490);
+        frame.setLocation(0,0);
+        content.removeAll();
+        content.add(frame, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,7 +228,7 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
             String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
-            //editarProyecto(codigo);
+            editarRelacion(codigo);
         }
     }//GEN-LAST:event_botonEditarMousePressed
 

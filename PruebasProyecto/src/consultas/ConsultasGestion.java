@@ -5,9 +5,9 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
+import javax.persistence.PersistenceException;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +54,8 @@ public class ConsultasGestion {
             session.save(gestion);
             tx.commit();
             JOptionPane.showMessageDialog(null, "La relacion se ha añadido correctamente.");
-        } catch (ConstraintViolationException e) {
-            System.out.println("EMPLEADO DUPLICADO");
-            System.out.printf("MENSAJE:%s%n", e.getMessage());
-            System.out.printf("COD ERROR:%d%n", e.getErrorCode());
-            System.out.printf("ERROR SQL:%s%n", e.getSQLException().getMessage());
+        } catch (PersistenceException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error y no se ha podido añadir la nueva relacion.");
             return false;
         }
         return true;
@@ -71,6 +68,12 @@ public class ConsultasGestion {
         gestion.setEstado("baja");
         tx.commit();
         session.update(gestion);
+    }
+
+    public GestionEntity cargarDatoConcreto(String codigo) {
+        GestionEntity relacion = new GestionEntity();
+        relacion = session.load(GestionEntity.class, Integer.parseInt(codigo));
+        return relacion;
     }
 
     public void cerrarConexion() {

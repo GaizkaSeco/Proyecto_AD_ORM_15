@@ -149,7 +149,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 70, 30));
 
         nombreField.setBackground(new java.awt.Color(204, 204, 204));
-        nombreField.setForeground(new java.awt.Color(204, 204, 204));
+        nombreField.setForeground(new java.awt.Color(0, 0, 0));
         nombreField.setBorder(null);
         nombreField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +160,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 350, -1));
 
         apellidoField.setBackground(new java.awt.Color(204, 204, 204));
-        apellidoField.setForeground(new java.awt.Color(204, 204, 204));
+        apellidoField.setForeground(new java.awt.Color(0, 0, 0));
         apellidoField.setBorder(null);
         apellidoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +176,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 350, -1));
 
         direccionField.setBackground(new java.awt.Color(204, 204, 204));
-        direccionField.setForeground(new java.awt.Color(204, 204, 204));
+        direccionField.setForeground(new java.awt.Color(0, 0, 0));
         direccionField.setBorder(null);
         direccionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +198,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
 
         codField.setEditable(false);
         codField.setBackground(new java.awt.Color(204, 204, 204));
-        codField.setForeground(new java.awt.Color(204, 204, 204));
+        codField.setForeground(new java.awt.Color(0, 0, 0));
         codField.setBorder(null);
         codField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +220,7 @@ public class PanelEditarProveedor extends javax.swing.JPanel {
             } else {
                 estado = "baja";
             }
-            if (con.editarProveedor(codField.getText(), nombreField.getText(), apellidoField.getText(), direccionField.getText(), estado)) {
+            if (con.editarProveedor(codField.getText().toUpperCase(), nombreField.getText(), apellidoField.getText(), direccionField.getText(), estado)) {
                 con.cerrarConexion();
                 PanelGestionProveedores frame = new PanelGestionProveedores(content);
                 frame.setSize(830, 490);

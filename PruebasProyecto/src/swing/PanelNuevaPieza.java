@@ -11,11 +11,11 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author omega
  */
 public class PanelNuevaPieza extends javax.swing.JPanel {
     JPanel content = null;
+
     /**
      * Creates new form PanelNuevaPieza
      */
@@ -28,19 +28,16 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         ConsultasPiezas con = new ConsultasPiezas();
         try {
             float precio = Float.parseFloat(precioField.getText());
-            if (con.anadirPieza(codigoField.getText(), nombreField.getText(), precio, descripcionField.getText())) {
-                PanelGestionPiezas frame = new PanelGestionPiezas(content);
-                frame.setSize(830, 490);
-                frame.setLocation(0, 0);
-                content.removeAll();
-                content.add(frame, BorderLayout.CENTER);
-                content.revalidate();
-                content.repaint();
+            if (con.anadirPieza(codigoField.getText().toUpperCase(), nombreField.getText(), precio, descripcionField.getText())) {
+                codigoField.setText("");
+                nombreField.setText("");
+                descripcionField.setText("");
+                precioField.setText("");
             }
-            con.cerrarConexion();
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "El precio debe ser escrito con con numeros");
+            JOptionPane.showMessageDialog(null, "El precio debe ser escrito con numeros");
         }
+        con.cerrarConexion();
     }
 
     /**
@@ -67,6 +64,8 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         codigoField = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
+        botonLimpiar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(830, 490));
@@ -79,13 +78,8 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 70, 30));
 
         nombreField.setBackground(new java.awt.Color(204, 204, 204));
-        nombreField.setForeground(new java.awt.Color(204, 204, 204));
+        nombreField.setForeground(new java.awt.Color(0, 0, 0));
         nombreField.setBorder(null);
-        nombreField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreFieldActionPerformed(evt);
-            }
-        });
         add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -96,13 +90,8 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 350, -1));
 
         precioField.setBackground(new java.awt.Color(204, 204, 204));
-        precioField.setForeground(new java.awt.Color(204, 204, 204));
+        precioField.setForeground(new java.awt.Color(0, 0, 0));
         precioField.setBorder(null);
-        precioField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioFieldActionPerformed(evt);
-            }
-        });
         add(precioField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -112,13 +101,8 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 350, -1));
 
         descripcionField.setBackground(new java.awt.Color(204, 204, 204));
-        descripcionField.setForeground(new java.awt.Color(204, 204, 204));
+        descripcionField.setForeground(new java.awt.Color(0, 0, 0));
         descripcionField.setBorder(null);
-        descripcionField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descripcionFieldActionPerformed(evt);
-            }
-        });
         add(descripcionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -152,7 +136,7 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 160, 50));
+        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 160, 50));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -160,44 +144,58 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 70, 30));
 
         codigoField.setBackground(new java.awt.Color(204, 204, 204));
-        codigoField.setForeground(new java.awt.Color(204, 204, 204));
+        codigoField.setForeground(new java.awt.Color(0, 0, 0));
         codigoField.setBorder(null);
-        codigoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoFieldActionPerformed(evt);
-            }
-        });
         add(codigoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 350, 30));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 350, -1));
+
+        botonLimpiar.setBackground(new java.awt.Color(57, 57, 58));
+        botonLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonLimpiarMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(219, 219, 219));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("LIMPIAR");
+
+        javax.swing.GroupLayout botonLimpiarLayout = new javax.swing.GroupLayout(botonLimpiar);
+        botonLimpiar.setLayout(botonLimpiarLayout);
+        botonLimpiarLayout.setHorizontalGroup(
+            botonLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        botonLimpiarLayout.setVerticalGroup(
+            botonLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonLimpiarLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+
+        add(botonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 160, 50));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreFieldActionPerformed
-
-    private void precioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioFieldActionPerformed
-
-    private void descripcionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descripcionFieldActionPerformed
-
-    private void codigoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoFieldActionPerformed
-
     private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
-        if(codigoField.getText().isBlank() || nombreField.getText().isBlank() || precioField.getText().isBlank() || descripcionField.getText().isBlank()){
+        if (codigoField.getText().isBlank() || nombreField.getText().isBlank() || precioField.getText().isBlank() || descripcionField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir una pieza.");
         } else {
             anadirPieza();
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 
+    private void botonLimpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLimpiarMousePressed
+        codigoField.setText("");
+        nombreField.setText("");
+        precioField.setText("");
+        descripcionField.setText("");
+    }//GEN-LAST:event_botonLimpiarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonAnadir;
+    private javax.swing.JPanel botonLimpiar;
     private javax.swing.JTextField codigoField;
     private javax.swing.JTextField descripcionField;
     private javax.swing.JLabel jLabel1;
@@ -206,6 +204,7 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

@@ -4,8 +4,18 @@
  */
 package swing;
 
+import consultas.ConsultasGestion;
+import consultas.ConsultasPiezas;
+import consultas.ConsultasProveedores;
+import consultas.ConsultasProyectos;
+import hibernate.GestionEntity;
+import hibernate.PiezasEntity;
+import hibernate.ProveedoresEntity;
+import hibernate.ProyectosEntity;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
@@ -16,9 +26,67 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
     /**
      * Creates new form PanelEditarRelacion
      */
-    public PanelEditarRelacion(JPanel content) {
+    public PanelEditarRelacion(JPanel content, String codigo) {
         initComponents();
         this.content = content;
+        ConsultasGestion con = new ConsultasGestion();
+        GestionEntity relacion = con.cargarDatoConcreto(codigo);
+        cantidadField.setText(String.valueOf(relacion.getCantidad()));
+        ConsultasProyectos consultasProyectos = new ConsultasProyectos();
+        java.util.List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
+        consultasProyectos.cerrarConexion();
+        ConsultasProveedores consultasProveedores = new ConsultasProveedores();
+        java.util.List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
+        consultasProveedores.cerrarConexion();
+        ConsultasPiezas consultasPiezas = new ConsultasPiezas();
+        List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
+        consultasPiezas.cerrarConexion();
+        if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo dada de alta, operacion de editar denegada, volviendo atras.");
+            PanelGestionGlobal frame = new PanelGestionGlobal(content);
+            frame.setSize(830, 490);
+            frame.setLocation(0, 0);
+            content.removeAll();
+            content.add(frame, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }else {
+            int proyectoSele = -1;
+            int proveSele = -1;
+            int piezaSele = -1;
+            for (int i = 0; i < proyectos.size(); i++) {
+                comboBoxProyectos.addItem(proyectos.get(i).getCodproye());
+                if (proyectos.get(i).getCodproye().equals(relacion.getProyectosByCodproyecto().getCodproye())) {
+                    proyectoSele = i;
+                }
+            }
+            for (int i = 0; i < proveedores.size(); i++) {
+                comboBoxProveedores.addItem(proveedores.get(i).getCodprov());
+                if (proveedores.get(i).getCodprov().equals(relacion.getProveedoresByCodproveedor().getCodprov())) {
+                    proveSele = i;
+                }
+            }
+            for (int i = 0; i < piezas.size(); i++) {
+                comboBoxPiezas.addItem(piezas.get(i).getCodpiezas());
+                if (piezas.get(i).getCodpiezas().equals(relacion.getPiezasByCodpieza().getCodpiezas())) {
+                    piezaSele = i;
+                }
+            }
+            if (proyectoSele == -1 || proveSele == -1 || piezaSele == -1) {
+                JOptionPane.showMessageDialog(null, "Uno de los campos tiene el estado de baja y no se puede editar la relacion, si quiere editarlo da de alta el campo.");
+                PanelGestionGlobal frame = new PanelGestionGlobal(content);
+                frame.setSize(830, 490);
+                frame.setLocation(0, 0);
+                content.removeAll();
+                content.add(frame, BorderLayout.CENTER);
+                content.revalidate();
+                content.repaint();
+            } else {
+                comboBoxPiezas.setSelectedIndex(piezaSele);
+                comboBoxProyectos.setSelectedIndex(proyectoSele);
+                comboBoxProveedores.setSelectedIndex(proveSele);
+            }
+        }
     }
 
     /**
@@ -31,7 +99,7 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        botonAnadir = new javax.swing.JPanel();
+        botonEditar = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -54,32 +122,32 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         jLabel2.setText("EDITAR RELACION");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 830, -1));
 
-        botonAnadir.setBackground(new java.awt.Color(57, 57, 58));
-        botonAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonEditar.setBackground(new java.awt.Color(57, 57, 58));
+        botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonAnadirMousePressed(evt);
+                botonEditarMousePressed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(219, 219, 219));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("AÑADIR RELACION");
+        jLabel6.setText("EDITAR RELACION");
 
-        javax.swing.GroupLayout botonAnadirLayout = new javax.swing.GroupLayout(botonAnadir);
-        botonAnadir.setLayout(botonAnadirLayout);
-        botonAnadirLayout.setHorizontalGroup(
-            botonAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
+        botonEditar.setLayout(botonEditarLayout);
+        botonEditarLayout.setHorizontalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
-        botonAnadirLayout.setVerticalGroup(
-            botonAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonAnadirLayout.createSequentialGroup()
+        botonEditarLayout.setVerticalGroup(
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonEditarLayout.createSequentialGroup()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 160, 50));
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 160, 50));
 
         botonCancelar.setBackground(new java.awt.Color(57, 57, 58));
         botonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,7 +183,7 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 260, 30));
 
         cantidadField.setBackground(new java.awt.Color(204, 204, 204));
-        cantidadField.setForeground(new java.awt.Color(204, 204, 204));
+        cantidadField.setForeground(new java.awt.Color(0, 0, 0));
         cantidadField.setBorder(null);
         cantidadField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +218,7 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
+    private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
         /*try {
             if (cantidadField.getText().isBlank() || ciudadField.getText().isBlank()) {
                 JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder editar el proyecto.");
@@ -174,10 +242,10 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
                 }
             }
         }*/
-    }//GEN-LAST:event_botonAnadirMousePressed
+    }//GEN-LAST:event_botonEditarMousePressed
 
     private void botonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCancelarMousePressed
-        PanelGestionProyectos frame = new PanelGestionProyectos(content);
+        PanelGestionGlobal frame = new PanelGestionGlobal(content);
         frame.setSize(830, 490);
         frame.setLocation(0, 0);
         content.removeAll();
@@ -192,8 +260,8 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel botonAnadir;
     private javax.swing.JPanel botonCancelar;
+    private javax.swing.JPanel botonEditar;
     private javax.swing.JTextField cantidadField;
     private javax.swing.JComboBox<String> comboBoxPiezas;
     private javax.swing.JComboBox<String> comboBoxProveedores;

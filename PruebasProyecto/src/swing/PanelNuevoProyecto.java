@@ -12,12 +12,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
  * @author omega
  */
 public class PanelNuevoProyecto extends javax.swing.JPanel {
     JPanel content;
-    
+
     /**
      * Creates new form PanelNuevoProyecto
      */
@@ -28,22 +27,14 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
 
     public void anadirProyecto() {
         ConsultasProyectos con = new ConsultasProyectos();
-        try {
-            if (con.anadirProyecto(codigoField.getText(), nombreField.getText(), ciudadField.getText())) {
-                PanelGestionProyectos frame = new PanelGestionProyectos(content);
-                frame.setSize(830, 490);
-                frame.setLocation(0, 0);
-                content.removeAll();
-                content.add(frame, BorderLayout.CENTER);
-                content.revalidate();
-                content.repaint();
-            }
-            con.cerrarConexion();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "El precio debe ser escrito con con numeros");
+        if (con.anadirProyecto(codigoField.getText().toUpperCase(), nombreField.getText(), ciudadField.getText())) {
+            codigoField.setText("");
+            nombreField.setText("");
+            ciudadField.setText("");
         }
+        con.cerrarConexion();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +51,8 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         ciudadField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        botonLimpiar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         botonAnadir = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -71,17 +64,13 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Nombre: ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 70, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 250, 30));
 
         nombreField.setBackground(new java.awt.Color(204, 204, 204));
-        nombreField.setForeground(new java.awt.Color(204, 204, 204));
+        nombreField.setForeground(new java.awt.Color(0, 0, 0));
         nombreField.setBorder(null);
-        nombreField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreFieldActionPerformed(evt);
-            }
-        });
         add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -92,20 +81,43 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 350, -1));
 
         ciudadField.setBackground(new java.awt.Color(204, 204, 204));
-        ciudadField.setForeground(new java.awt.Color(204, 204, 204));
+        ciudadField.setForeground(new java.awt.Color(0, 0, 0));
         ciudadField.setBorder(null);
-        ciudadField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ciudadFieldActionPerformed(evt);
-            }
-        });
-        add(ciudadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 360, 30));
+        add(ciudadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Ciudad:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 70, 30));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 360, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 250, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 350, -1));
+
+        botonLimpiar.setBackground(new java.awt.Color(57, 57, 58));
+        botonLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonLimpiarMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(219, 219, 219));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("LIMPIAR");
+
+        javax.swing.GroupLayout botonLimpiarLayout = new javax.swing.GroupLayout(botonLimpiar);
+        botonLimpiar.setLayout(botonLimpiarLayout);
+        botonLimpiarLayout.setHorizontalGroup(
+            botonLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        botonLimpiarLayout.setVerticalGroup(
+            botonLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonLimpiarLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+
+        add(botonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 50));
 
         botonAnadir.setBackground(new java.awt.Color(57, 57, 58));
         botonAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,48 +144,39 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 160, 50));
+        add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 160, 50));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Codigo:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 70, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 250, 30));
 
         codigoField.setBackground(new java.awt.Color(204, 204, 204));
-        codigoField.setForeground(new java.awt.Color(204, 204, 204));
+        codigoField.setForeground(new java.awt.Color(0, 0, 0));
         codigoField.setBorder(null);
-        codigoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoFieldActionPerformed(evt);
-            }
-        });
         add(codigoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 350, 30));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreFieldActionPerformed
-
-    private void ciudadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciudadFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ciudadFieldActionPerformed
-
-    private void codigoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoFieldActionPerformed
-
     private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
-        if(codigoField.getText().isBlank() || nombreField.getText().isBlank() || ciudadField.getText().isBlank()){
+        if (codigoField.getText().isBlank() || nombreField.getText().isBlank() || ciudadField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un nuevo proyecto.");
         } else {
             anadirProyecto();
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 
+    private void botonLimpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLimpiarMousePressed
+        codigoField.setText("");
+        nombreField.setText("");
+        ciudadField.setText("");
+    }//GEN-LAST:event_botonLimpiarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonAnadir;
+    private javax.swing.JPanel botonLimpiar;
     private javax.swing.JTextField ciudadField;
     private javax.swing.JTextField codigoField;
     private javax.swing.JLabel jLabel1;
@@ -181,6 +184,7 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

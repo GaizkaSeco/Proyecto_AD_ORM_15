@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
+import javax.persistence.PersistenceException;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +54,8 @@ public class ConsultasProyectos {
         try {
             tx.commit();
             JOptionPane.showMessageDialog(null, "El proyecto se ha añadido correctamente.");
-        } catch (ConstraintViolationException e) {
-            System.out.println("EMPLEADO DUPLICADO");
-            System.out.printf("MENSAJE:%s%n", e.getMessage());
-            System.out.printf("COD ERROR:%d%n", e.getErrorCode());
-            System.out.printf("ERROR SQL:%s%n", e.getSQLException().getMessage());
+        } catch (PersistenceException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error y no se ha podido añadir el proyecto comprueba que los datos con correctos.");
             return false;
         }
         return true;
@@ -74,8 +72,8 @@ public class ConsultasProyectos {
         try {
             tx.commit();
             JOptionPane.showMessageDialog(null, "El proyecto se ha editado correctamente.");
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(null, "Ha surgido un error intentalo de nuevo mas tarde.");
+        } catch (PersistenceException e) {
+            JOptionPane.showMessageDialog(null, "Ha surgido un error y no se ha podido editar el proyecto comprueba que los datos con correctos.");
             return false;
         }
         return true;

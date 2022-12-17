@@ -11,6 +11,7 @@ import hibernate.ProyectosEntity;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
 
 /**
  *
@@ -150,7 +151,7 @@ public class PanelEditarPieza extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 70, 30));
 
         nombreField.setBackground(new java.awt.Color(204, 204, 204));
-        nombreField.setForeground(new java.awt.Color(204, 204, 204));
+        nombreField.setForeground(new java.awt.Color(0, 0, 0));
         nombreField.setBorder(null);
         nombreField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +162,7 @@ public class PanelEditarPieza extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 350, -1));
 
         precioField.setBackground(new java.awt.Color(204, 204, 204));
-        precioField.setForeground(new java.awt.Color(204, 204, 204));
+        precioField.setForeground(new java.awt.Color(0, 0, 0));
         precioField.setBorder(null);
         precioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +178,7 @@ public class PanelEditarPieza extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 350, -1));
 
         descripcionField.setBackground(new java.awt.Color(204, 204, 204));
-        descripcionField.setForeground(new java.awt.Color(204, 204, 204));
+        descripcionField.setForeground(new java.awt.Color(0, 0, 0));
         descripcionField.setBorder(null);
         descripcionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +200,7 @@ public class PanelEditarPieza extends javax.swing.JPanel {
 
         codField.setEditable(false);
         codField.setBackground(new java.awt.Color(204, 204, 204));
-        codField.setForeground(new java.awt.Color(204, 204, 204));
+        codField.setForeground(new java.awt.Color(0, 0, 0));
         codField.setBorder(null);
         codField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +224,7 @@ public class PanelEditarPieza extends javax.swing.JPanel {
                 } else {
                     estado = "baja";
                 }
-                if (con.editarPieza(codField.getText(), nombreField.getText(), precio, descripcionField.getText(), estado)) {
+                if (con.editarPieza(codField.getText().toUpperCase(), nombreField.getText(), precio, descripcionField.getText(), estado)) {
                     con.cerrarConexion();
                     PanelGestionPiezas frame = new PanelGestionPiezas(content);
                     frame.setSize(830, 490);

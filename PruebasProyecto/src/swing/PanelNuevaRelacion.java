@@ -151,7 +151,7 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 260, 30));
 
         cantidadField.setBackground(new java.awt.Color(204, 204, 204));
-        cantidadField.setForeground(new java.awt.Color(204, 204, 204));
+        cantidadField.setForeground(new java.awt.Color(0, 0, 0));
         cantidadField.setBorder(null);
         cantidadField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +192,6 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
                 int cantidad = Integer.parseInt(cantidadField.getText());
                 ConsultasGestion con = new ConsultasGestion();
                 if (con.anadirRelacion(comboBoxProveedores.getSelectedItem().toString(), comboBoxPiezas.getSelectedItem().toString(), comboBoxProyectos.getSelectedItem().toString(), cantidad)) {
-                    con.cerrarConexion();
                     PanelGestionGlobal frame = new PanelGestionGlobal(content);
                     frame.setSize(830, 490);
                     frame.setLocation(0, 0);
@@ -201,11 +200,12 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
                     content.revalidate();
                     content.repaint();
                 }
+                con.cerrarConexion();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "La cantidad esta mal escrita.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "La opcion no esta disponible por que no cumples los requesitos.");
+            JOptionPane.showMessageDialog(null, "La opcion no esta disponible por que no cumples los requisitos.");
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 
