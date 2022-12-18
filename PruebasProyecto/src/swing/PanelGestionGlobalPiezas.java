@@ -144,6 +144,11 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         tableProyectos = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        labelProveedores = new javax.swing.JLabel();
+        labelProyectos = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,7 +166,7 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tableProveedores);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 400, 360));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 400, 350));
 
         tableProyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +181,7 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tableProyectos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 400, 360));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 400, 350));
 
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -192,8 +197,34 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Piezas");
+        jLabel1.setText("Piezas:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("PROVEEDORES");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 56, 400, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("PROYECTOS");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 56, 400, 30));
+
+        labelProveedores.setForeground(new java.awt.Color(0, 0, 0));
+        labelProveedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelProveedores.setText("Numero de proveedores que distribuyen:");
+        add(labelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 400, 30));
+
+        labelProyectos.setForeground(new java.awt.Color(0, 0, 0));
+        labelProyectos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelProyectos.setText("Numero de proyectos suministrados:");
+        add(labelProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 400, 30));
+
+        labelTotal.setForeground(new java.awt.Color(0, 0, 0));
+        labelTotal.setText("Cantidad total suministrada: ");
+        add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 400, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -212,6 +243,18 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
         cargarTablaProveedores(proveedores);
         cargarTablaProyectos(proyectos);
         consultasGestion.cerrarConexion();
+        //nuemro de proyectos suministrados
+        labelProyectos.setText("Numero de proyectos suministrados: " + proyectos.size());
+        //numero de piezas totales
+        int total = 0;
+        for (int i = 0; i < gestiones.size(); i++) {
+            if (gestiones.get(i).getPiezasByCodpieza().getCodpiezas().equals(cod)) {
+                total = total + gestiones.get(i).getCantidad();
+            }
+        }
+        labelTotal.setText("Cantidad total suministrada: " + total);
+        //nnumero de proveedores que distrubuyen la pieza
+        labelProveedores.setText("Numero de proveedores que distribuyen: " + proveedores.size());
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -222,8 +265,13 @@ public class PanelGestionGlobalPiezas extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelProveedores;
+    private javax.swing.JLabel labelProyectos;
+    private javax.swing.JLabel labelTotal;
     private javax.swing.JTable tableProveedores;
     private javax.swing.JTable tableProyectos;
     // End of variables declaration//GEN-END:variables
