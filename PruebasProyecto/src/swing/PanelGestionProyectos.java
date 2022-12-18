@@ -4,8 +4,10 @@
  */
 package swing;
 
+import consultas.ConsultasGestion;
 import consultas.ConsultasProveedores;
 import consultas.ConsultasProyectos;
+import hibernate.GestionEntity;
 import hibernate.ProveedoresEntity;
 import hibernate.ProyectosEntity;
 import scrollbar.ScrollBarCustom;
@@ -191,7 +193,24 @@ public class PanelGestionProyectos extends javax.swing.JPanel {
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
             String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
-            bajaProyecto(codigo);
+            boolean relacion = false;
+            ConsultasGestion con = new ConsultasGestion();
+            List<GestionEntity> gestiones = con.recuperarGestionGeneral();
+            con.cerrarConexion();
+            for (GestionEntity gestion : gestiones) {
+                if (gestion.getProyectosByCodproyecto().getCodproye().equals(codigo) && gestion.getEstado().equals("alta")) {
+                    relacion = true;
+                    break;
+                }
+            }
+            if (relacion) {
+                int op = JOptionPane.showConfirmDialog(this, "El proyecto que vas a dar de baja tiene una gestion activa.\n ¿Estas seguro de que quieres dar de baja este proyecto?");
+                if (op == 0) {
+                    bajaProyecto(codigo);
+                }
+            } else {
+                bajaProyecto(codigo);
+            }
         }
     }//GEN-LAST:event_botonBajaMousePressed
 

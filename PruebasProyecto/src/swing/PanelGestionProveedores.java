@@ -13,10 +13,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import consultas.ConsultasGestion;
 import consultas.ConsultasProveedores;
 
 import java.awt.BorderLayout;
 
+import hibernate.GestionEntity;
 import hibernate.ProveedoresEntity;
 import scrollbar.ScrollBarCustom;
 import table.TableHeader;
@@ -206,7 +208,24 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         } else {
             //Obtencion del id del objeto seleccionaod en la tabla
             String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
-            bajaProveedor(codigo);
+            boolean relacion = false;
+            ConsultasGestion con = new ConsultasGestion();
+            List<GestionEntity> gestiones = con.recuperarGestionGeneral();
+            con.cerrarConexion();
+            for (GestionEntity gestion : gestiones) {
+                if (gestion.getProveedoresByCodproveedor().getCodprov().equals(codigo) && gestion.getEstado().equals("alta")) {
+                    relacion = true;
+                    break;
+                }
+            }
+            if (relacion) {
+                int op = JOptionPane.showConfirmDialog(this, "El proveedor que vas a dar de baja tiene una gestion activa.\n ¿Estas seguro de que quieres dar de baja este proveedor?");
+                if (op == 0) {
+                    bajaProveedor(codigo);
+                }
+            } else {
+                bajaProveedor(codigo);
+            }
         }
     }//GEN-LAST:event_botonBajaMousePressed
 

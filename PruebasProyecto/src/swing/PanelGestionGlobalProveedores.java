@@ -144,6 +144,10 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProyectos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        labelProyectos = new javax.swing.JLabel();
+        labelPiezas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -168,7 +172,7 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tablePiezas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 400, 360));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 400, 350));
 
         tableProyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,12 +187,34 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tableProyectos);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 400, 360));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 400, 350));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Proveedor");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
+
+        labelProyectos.setForeground(new java.awt.Color(0, 0, 0));
+        labelProyectos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelProyectos.setText("Numero de proyectos suministrados: ");
+        add(labelProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 400, 30));
+
+        labelPiezas.setForeground(new java.awt.Color(0, 0, 0));
+        labelPiezas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPiezas.setText("Numero de piezas suministradas(total):");
+        add(labelPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 400, 30));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("PROYECTOS");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 56, 400, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("PIEZAS");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 56, 400, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -207,14 +233,28 @@ public class PanelGestionGlobalProveedores extends javax.swing.JPanel {
         cargarTablaPiezas(piezas);
         cargarTablaProyectos(proyectos);
         consultasGestion.cerrarConexion();
+        //Numero de peizas suministradas
+        int total = 0;
+        for (GestionEntity gestione : gestiones) {
+            if (gestione.getProveedoresByCodproveedor().getCodprov().equals(jComboBox1.getSelectedItem())) {
+                total = total + gestione.getCantidad();
+            }
+        }
+        labelPiezas.setText("Numero de piezas suministradas(total): " + total);
+        //numero de proyectos suministrados
+        labelProyectos.setText("Numero de proyectos suministrados: " + proyectos.size());
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelPiezas;
+    private javax.swing.JLabel labelProyectos;
     private javax.swing.JTable tablePiezas;
     private javax.swing.JTable tableProyectos;
     // End of variables declaration//GEN-END:variables

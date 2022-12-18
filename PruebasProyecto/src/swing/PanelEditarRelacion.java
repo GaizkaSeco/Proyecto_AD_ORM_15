@@ -106,6 +106,9 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         comboBoxProyectos = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        labelDatosProveedor = new javax.swing.JLabel();
+        labelDatosProyecto = new javax.swing.JLabel();
+        labelDatosPieza = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,14 +134,14 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
         botonEditar.setLayout(botonEditarLayout);
         botonEditarLayout.setHorizontalGroup(
-                botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
         botonEditarLayout.setVerticalGroup(
-                botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(botonEditarLayout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 1, Short.MAX_VALUE))
+            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonEditarLayout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 160, 50));
@@ -158,14 +161,14 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         javax.swing.GroupLayout botonCancelarLayout = new javax.swing.GroupLayout(botonCancelar);
         botonCancelar.setLayout(botonCancelarLayout);
         botonCancelarLayout.setHorizontalGroup(
-                botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
         botonCancelarLayout.setVerticalGroup(
-                botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(botonCancelarLayout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 1, Short.MAX_VALUE))
+            botonCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botonCancelarLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 50));
@@ -179,13 +182,8 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         cantidadField.setBackground(new java.awt.Color(204, 204, 204));
         cantidadField.setForeground(new java.awt.Color(0, 0, 0));
         cantidadField.setBorder(null);
-        cantidadField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadFieldActionPerformed(evt);
-            }
-        });
-        add(cantidadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 350, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 350, -1));
+        add(cantidadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 160, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -205,11 +203,26 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         jLabel10.setText("Codigo del proveedor:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 30));
 
-        add(comboBoxPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 350, -1));
+        comboBoxPiezas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxPiezasItemStateChanged(evt);
+            }
+        });
+        add(comboBoxPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 160, -1));
 
-        add(comboBoxProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 350, -1));
+        comboBoxProveedores.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxProveedoresItemStateChanged1(evt);
+            }
+        });
+        add(comboBoxProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 160, -1));
 
-        add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 350, -1));
+        comboBoxProyectos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxProyectosItemStateChanged(evt);
+            }
+        });
+        add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -217,7 +230,16 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         jLabel3.setText("Estado:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 250, 30));
 
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 350, -1));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 160, -1));
+
+        labelDatosProveedor.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        add(labelDatosProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 290, 50));
+
+        labelDatosProyecto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        add(labelDatosProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 290, 50));
+
+        labelDatosPieza.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        add(labelDatosPieza, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 290, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
@@ -260,9 +282,29 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
         content.repaint();
     }//GEN-LAST:event_botonCancelarMousePressed
 
-    private void cantidadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadFieldActionPerformed
+    private void comboBoxProveedoresItemStateChanged1(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProveedoresItemStateChanged1
+        for (ProveedoresEntity proveedore : proveedores) {
+            if (proveedore.getCodprov().equals(comboBoxProveedores.getSelectedItem())) {
+                labelDatosProveedor.setText("<html><p>Nombre: " + proveedore.getNombre() + "</p><p>Apellido: " + proveedore.getApellidos() + "</p><p>Direccion: " + proveedore.getDireccion() + "</p></html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxProveedoresItemStateChanged1
+
+    private void comboBoxPiezasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxPiezasItemStateChanged
+        for (PiezasEntity pieza : piezas) {
+            if (pieza.getCodpiezas().equals(comboBoxPiezas.getSelectedItem())) {
+                labelDatosPieza.setText("<html><p>Nombre: " + pieza.getNombre() + "</p><p>Descripcion: " + pieza.getDescripcion() + "</p><p>Precio: " + pieza.getPrecio() + "</p><html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxPiezasItemStateChanged
+
+    private void comboBoxProyectosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProyectosItemStateChanged
+        for (ProyectosEntity proyecto : proyectos) {
+            if (proyecto.getCodproye().equals(comboBoxProyectos.getSelectedItem())) {
+                labelDatosProyecto.setText("<html><p>Nombre: " + proyecto.getNombre() + "</p><p>Ciudad: " + proyecto.getCiudad() + "</p></html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxProyectosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -282,5 +324,8 @@ public class PanelEditarRelacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelDatosPieza;
+    private javax.swing.JLabel labelDatosProveedor;
+    private javax.swing.JLabel labelDatosProyecto;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,8 +4,10 @@
  */
 package swing;
 
+import consultas.ConsultasGestion;
 import consultas.ConsultasPiezas;
 import consultas.ConsultasProveedores;
+import hibernate.GestionEntity;
 import hibernate.PiezasEntity;
 import hibernate.ProveedoresEntity;
 
@@ -186,9 +188,26 @@ public class PanelGestionPiezas extends javax.swing.JPanel {
         if (table1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Para eliminar debes haber seleccionado algun dato en la tabla.");
         } else {
-            //Obtencion del id del objeto seleccionaod en la tabla
+            //Obtencion del id del objeto seleccionado en la tabla
             String codigo = table1.getValueAt(table1.getSelectedRow(), 0).toString();
-            bajaPieza(codigo);
+            boolean relacion = false;
+            ConsultasGestion con = new ConsultasGestion();
+            List<GestionEntity> piezas = con.recuperarGestionGeneral();
+            con.cerrarConexion();
+            for (GestionEntity gestion : piezas) {
+                if (gestion.getPiezasByCodpieza().getCodpiezas().equals(codigo) && gestion.getEstado().equals("alta")) {
+                    relacion = true;
+                    break;
+                }
+            }
+            if (relacion) {
+                int op = JOptionPane.showConfirmDialog(this, "La pieza que vas a dar de baja tiene una gestion activa.\n ¿Estas seguro de que quieres dar de baja esta pieza?");
+                if (op == 0) {
+                    bajaPieza(codigo);
+                }
+            } else {
+                bajaPieza(codigo);
+            }
         }
     }//GEN-LAST:event_botonBajaMousePressed
 

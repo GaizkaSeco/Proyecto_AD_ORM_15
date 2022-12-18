@@ -23,6 +23,9 @@ import javax.swing.JPanel;
 public class PanelNuevaRelacion extends javax.swing.JPanel {
     JPanel content;
     boolean anadir;
+    List<ProyectosEntity> proyectos;
+    List<ProveedoresEntity> proveedores;
+    List<PiezasEntity> piezas;
 
     /**
      * Creates new form PanelNuevaRelacion
@@ -32,13 +35,13 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         this.content = content;
 
         ConsultasProyectos consultasProyectos = new ConsultasProyectos();
-        List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
+        proyectos = consultasProyectos.cargarAltas();
         consultasProyectos.cerrarConexion();
         ConsultasProveedores consultasProveedores = new ConsultasProveedores();
-        List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
+        proveedores = consultasProveedores.cargarAltas();
         consultasProveedores.cerrarConexion();
         ConsultasPiezas consultasPiezas = new ConsultasPiezas();
-        List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
+        piezas = consultasPiezas.cargarAltas();
         consultasPiezas.cerrarConexion();
         if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
             JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo, operacion de añadir bloqueada.");
@@ -80,6 +83,9 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         comboBoxPiezas = new javax.swing.JComboBox<>();
         comboBoxProveedores = new javax.swing.JComboBox<>();
         comboBoxProyectos = new javax.swing.JComboBox<>();
+        labelDatosPieza = new javax.swing.JLabel();
+        labelDatosProvedor = new javax.swing.JLabel();
+        labelDatosProyecto = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,13 +159,8 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         cantidadField.setBackground(new java.awt.Color(204, 204, 204));
         cantidadField.setForeground(new java.awt.Color(0, 0, 0));
         cantidadField.setBorder(null);
-        cantidadField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadFieldActionPerformed(evt);
-            }
-        });
-        add(cantidadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 350, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 350, -1));
+        add(cantidadField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 100, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -179,11 +180,38 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         jLabel10.setText("Codigo del proveedor:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 260, 30));
 
-        add(comboBoxPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 350, -1));
+        comboBoxPiezas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxPiezasItemStateChanged(evt);
+            }
+        });
+        add(comboBoxPiezas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 110, -1));
 
-        add(comboBoxProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 350, -1));
+        comboBoxProveedores.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxProveedoresItemStateChanged(evt);
+            }
+        });
+        add(comboBoxProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 110, -1));
 
-        add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 350, -1));
+        comboBoxProyectos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxProyectosItemStateChanged(evt);
+            }
+        });
+        add(comboBoxProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 110, -1));
+
+        labelDatosPieza.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        labelDatosPieza.setForeground(new java.awt.Color(0, 0, 0));
+        add(labelDatosPieza, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 330, 50));
+
+        labelDatosProvedor.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        labelDatosProvedor.setForeground(new java.awt.Color(0, 0, 0));
+        add(labelDatosProvedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 330, 50));
+
+        labelDatosProyecto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        labelDatosProyecto.setForeground(new java.awt.Color(0, 0, 0));
+        add(labelDatosProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 330, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAnadirMousePressed
@@ -219,9 +247,29 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
         content.repaint();
     }//GEN-LAST:event_botonCancelarMousePressed
 
-    private void cantidadFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadFieldActionPerformed
+    private void comboBoxProveedoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProveedoresItemStateChanged
+        for (ProveedoresEntity proveedore : proveedores) {
+            if (proveedore.getCodprov().equals(comboBoxProveedores.getSelectedItem())) {
+                labelDatosProvedor.setText("<html><p>Nombre: " + proveedore.getNombre() + "</p><p>Apellido: " + proveedore.getApellidos() + "</p><p>Direccion: " + proveedore.getDireccion() + "</p></html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxProveedoresItemStateChanged
+
+    private void comboBoxProyectosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProyectosItemStateChanged
+        for (ProyectosEntity proyecto : proyectos) {
+            if (proyecto.getCodproye().equals(comboBoxProyectos.getSelectedItem())) {
+                labelDatosProyecto.setText("<html><p>Nombre: " + proyecto.getNombre() + "</p><p>Ciudad: " + proyecto.getCiudad() + "</p></html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxProyectosItemStateChanged
+
+    private void comboBoxPiezasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxPiezasItemStateChanged
+        for (PiezasEntity pieza : piezas) {
+            if (pieza.getCodpiezas().equals(comboBoxPiezas.getSelectedItem())) {
+                labelDatosPieza.setText("<html><p>Nombre: " + pieza.getNombre() + "</p><p>Descripcion: " + pieza.getDescripcion() + "</p><p>Precio: " + pieza.getPrecio() + "</p><html>");
+            }
+        }
+    }//GEN-LAST:event_comboBoxPiezasItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,5 +287,8 @@ public class PanelNuevaRelacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelDatosPieza;
+    private javax.swing.JLabel labelDatosProvedor;
+    private javax.swing.JLabel labelDatosProyecto;
     // End of variables declaration//GEN-END:variables
 }
