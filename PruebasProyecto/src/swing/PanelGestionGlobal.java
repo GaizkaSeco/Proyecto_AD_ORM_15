@@ -111,14 +111,16 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         GestionEntity relacion = con.cargarDatoConcreto(codigo);
         ConsultasProyectos consultasProyectos = new ConsultasProyectos();
         List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
-        consultasProyectos.cerrarConexion();
         ConsultasProveedores consultasProveedores = new ConsultasProveedores();
         List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
-        consultasProveedores.cerrarConexion();
         ConsultasPiezas consultasPiezas = new ConsultasPiezas();
         List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
         if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
             JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo, operacion de editar denegada.");
+            con.cerrarConexion();
+            consultasProyectos.cerrarConexion();
+            consultasProveedores.cerrarConexion();
+            consultasPiezas.cerrarConexion();
             return false;
         }
         int proyectoSele = -1;
@@ -141,6 +143,31 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         }
         if (proyectoSele == -1 || proveSele == -1 || piezaSele == -1) {
             JOptionPane.showMessageDialog(null, "Uno de los campos tiene el estado de baja y no se puede editar la relacion, si quiere editarlo da de alta el campo.");
+            con.cerrarConexion();
+            consultasProyectos.cerrarConexion();
+            consultasProveedores.cerrarConexion();
+            consultasPiezas.cerrarConexion();
+            return false;
+        }
+        con.cerrarConexion();
+        consultasProyectos.cerrarConexion();
+        consultasProveedores.cerrarConexion();
+        consultasPiezas.cerrarConexion();
+        return true;
+    }
+
+    public boolean puedeAnadir() {
+        ConsultasProyectos consultasProyectos = new ConsultasProyectos();
+        List<ProyectosEntity> proyectos = consultasProyectos.cargarAltas();
+        consultasProyectos.cerrarConexion();
+        ConsultasProveedores consultasProveedores = new ConsultasProveedores();
+        List<ProveedoresEntity> proveedores = consultasProveedores.cargarAltas();
+        consultasProveedores.cerrarConexion();
+        ConsultasPiezas consultasPiezas = new ConsultasPiezas();
+        List<PiezasEntity> piezas = consultasPiezas.cargarAltas();
+        consultasPiezas.cerrarConexion();
+        if (proyectos.size() == 0 || proveedores.size() == 0 || piezas.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Es necesario que exista una opcion de cada tipo. Operacion de añadir denegada.");
             return false;
         }
         return true;
@@ -180,7 +207,7 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 490));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 610, 470));
 
         botonNuevo.setBackground(new java.awt.Color(57, 57, 58));
         botonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +232,7 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 155, -1));
+        add(botonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 155, -1));
 
         botonEditar.setBackground(new java.awt.Color(57, 57, 58));
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,7 +257,7 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, 155, -1));
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 155, -1));
 
         botonEliminar.setBackground(new java.awt.Color(57, 57, 58));
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -255,17 +282,19 @@ public class PanelGestionGlobal extends javax.swing.JPanel {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 155, -1));
+        add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 155, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoMousePressed
-        PanelNuevaRelacion frame = new PanelNuevaRelacion(content);
-        frame.setSize(830, 490);
-        frame.setLocation(0, 0);
-        content.removeAll();
-        content.add(frame, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        if (puedeAnadir()) {
+            PanelNuevaRelacion frame = new PanelNuevaRelacion(content);
+            frame.setSize(830, 490);
+            frame.setLocation(0, 0);
+            content.removeAll();
+            content.add(frame, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }
     }//GEN-LAST:event_botonNuevoMousePressed
 
     private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
