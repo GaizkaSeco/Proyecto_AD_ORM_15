@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import consultas.ConsultasGestion;
 import consultas.ConsultasProveedores;
@@ -29,6 +30,7 @@ import table.TableHeader;
 public class PanelGestionProveedores extends javax.swing.JPanel {
     String[] nombreColumnas = {"Codigo", "Nombre", "Apellido", "Direccion", "Estado"};
     JPanel content;
+    TableRowSorter<DefaultTableModel> sorter;
 
     /**
      * Creates new form GestionProveedores
@@ -80,13 +82,17 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             d[i][4] = String.valueOf(proveedores.get(i).getEstado());
         }
         //se carga el modelo de la tabla
-        table1.setModel(new DefaultTableModel(d, nombreColumnas) {
+        con.cerrarConexion();
+        DefaultTableModel modelo = new DefaultTableModel(d, nombreColumnas) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
-        });
-        con.cerrarConexion();
+        };
+        table1.setModel(modelo);
+        table1.setAutoCreateRowSorter(true);
+        sorter = new TableRowSorter<>(modelo);
+        table1.setRowSorter(sorter);
     }
 
     public void bajaProveedor(String codigo) {
@@ -121,6 +127,15 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         botonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        nombreField = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        direccionField = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        codField = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,7 +164,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         table1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 490));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 610, 470));
 
         botonBaja.setBackground(new java.awt.Color(57, 57, 58));
         botonBaja.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +189,7 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 155, -1));
+        add(botonBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, 155, -1));
 
         botonEditar.setBackground(new java.awt.Color(57, 57, 58));
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +214,49 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 155, -1));
+        add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 155, -1));
+
+        nombreField.setBackground(new java.awt.Color(204, 204, 204));
+        nombreField.setBorder(null);
+        nombreField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nombreFieldKeyReleased(evt);
+            }
+        });
+        add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 160, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 380, 160, -1));
+
+        direccionField.setBackground(new java.awt.Color(204, 204, 204));
+        direccionField.setBorder(null);
+        direccionField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                direccionFieldKeyReleased(evt);
+            }
+        });
+        add(direccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 160, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, -1));
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Buscar por nombre: ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, -1, -1));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Buscar por direccion:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
+
+        codField.setBackground(new java.awt.Color(204, 204, 204));
+        codField.setBorder(null);
+        codField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codFieldKeyReleased(evt);
+            }
+        });
+        add(codField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 160, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 160, -1));
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Buscar por codigo: ");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBajaMousePressed
@@ -239,12 +296,33 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonEditarMousePressed
 
+    private void nombreFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreFieldKeyReleased
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)"+nombreField.getText(), 1));
+    }//GEN-LAST:event_nombreFieldKeyReleased
+
+    private void direccionFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_direccionFieldKeyReleased
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)"+direccionField.getText(), 3));
+    }//GEN-LAST:event_direccionFieldKeyReleased
+
+    private void codFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codFieldKeyReleased
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)"+codField.getText(), 0));
+    }//GEN-LAST:event_codFieldKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonBaja;
     private javax.swing.JPanel botonEditar;
+    private javax.swing.JTextField codField;
+    private javax.swing.JTextField direccionField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTextField nombreField;
     private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }
