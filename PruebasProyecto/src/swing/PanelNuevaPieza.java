@@ -9,6 +9,8 @@ import consultas.ConsultasProveedores;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author omega
@@ -181,7 +183,13 @@ public class PanelNuevaPieza extends javax.swing.JPanel {
         if (codigoField.getText().isBlank() || nombreField.getText().isBlank() || precioField.getText().isBlank() || descripcionField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir una pieza.");
         } else {
-            anadirPieza();
+            Pattern pattern = Pattern.compile("^([A-Za-z]{2}[0-9]{4})$");
+            Matcher codPattern = pattern.matcher(codigoField.getText());
+            if (codPattern.find()) {
+                anadirPieza();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error para escribir el codigo tiene que contener 2 letras y 4 numeros.");
+            }
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 

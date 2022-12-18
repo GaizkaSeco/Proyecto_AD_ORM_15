@@ -8,6 +8,8 @@ import consultas.ConsultasPiezas;
 import consultas.ConsultasProyectos;
 
 import java.awt.BorderLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -163,7 +165,13 @@ public class PanelNuevoProyecto extends javax.swing.JPanel {
         if (codigoField.getText().isBlank() || nombreField.getText().isBlank() || ciudadField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un nuevo proyecto.");
         } else {
-            anadirProyecto();
+            Pattern pattern = Pattern.compile("^([A-Za-z]{2}[0-9]{4})$");
+            Matcher codPattern = pattern.matcher(codigoField.getText());
+            if (codPattern.find()) {
+                anadirProyecto();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error para escribir el codigo tiene que contener 2 letras y 4 numeros.");
+            }
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 

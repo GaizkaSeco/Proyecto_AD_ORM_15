@@ -9,6 +9,8 @@ import consultas.ConsultasProveedores;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author 9FDAM09
@@ -174,7 +176,13 @@ public class PanelNuevoProveedor extends javax.swing.JPanel {
         if (codField.getText().isBlank() || nombreField.getText().isBlank() || apellidoField.getText().isBlank() || direccionField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para poder añadir un proveedor.");
         } else {
-            anadirProveedor();
+            Pattern pattern = Pattern.compile("^([A-Za-z]{2}[0-9]{4})$");
+            Matcher codPattern = pattern.matcher(codField.getText());
+            if (codPattern.find()) {
+                anadirProveedor();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error para escribir el codigo tiene que contener 2 letras y 4 numeros.");
+            }
         }
     }//GEN-LAST:event_botonAnadirMousePressed
 

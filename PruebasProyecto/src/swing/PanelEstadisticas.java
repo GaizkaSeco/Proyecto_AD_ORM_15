@@ -107,30 +107,25 @@ public class PanelEstadisticas extends javax.swing.JPanel {
         labelPiezasProyecto = new javax.swing.JLabel();
         labelProveedorPiezasCantidad = new javax.swing.JLabel();
         labelProveedorProyectosMax = new javax.swing.JLabel();
-        labelProveedorPiezasMax = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelPiezasMas.setForeground(new java.awt.Color(0, 0, 0));
         labelPiezasMas.setText("Pieza de la que se ha suministrado mas cantidad: ");
-        add(labelPiezasMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 610, 30));
+        add(labelPiezasMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 610, 30));
 
         labelPiezasProyecto.setForeground(new java.awt.Color(0, 0, 0));
         labelPiezasProyecto.setText("Pieza que se ha suministrado a mas proyectos:");
-        add(labelPiezasProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 610, 30));
+        add(labelPiezasProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 610, 30));
 
         labelProveedorPiezasCantidad.setForeground(new java.awt.Color(0, 0, 0));
         labelProveedorPiezasCantidad.setText("Proveedor que ha suministrado mas cantidad de piezas");
-        add(labelProveedorPiezasCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 610, 30));
+        add(labelProveedorPiezasCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 610, 30));
 
         labelProveedorProyectosMax.setForeground(new java.awt.Color(0, 0, 0));
         labelProveedorProyectosMax.setText("Proveedor que ha suministrado a mas proyectos:");
-        add(labelProveedorProyectosMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 610, 30));
-
-        labelProveedorPiezasMax.setForeground(new java.awt.Color(0, 0, 0));
-        labelProveedorPiezasMax.setText("Proveedor que ha suministrado mas piezas:");
-        add(labelProveedorPiezasMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 610, 30));
+        add(labelProveedorProyectosMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 610, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -138,7 +133,6 @@ public class PanelEstadisticas extends javax.swing.JPanel {
     private javax.swing.JLabel labelPiezasMas;
     private javax.swing.JLabel labelPiezasProyecto;
     private javax.swing.JLabel labelProveedorPiezasCantidad;
-    private javax.swing.JLabel labelProveedorPiezasMax;
     private javax.swing.JLabel labelProveedorProyectosMax;
     // End of variables declaration//GEN-END:variables
 }
