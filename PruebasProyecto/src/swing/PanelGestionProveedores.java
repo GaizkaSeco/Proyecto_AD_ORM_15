@@ -160,7 +160,6 @@ public class PanelGestionProveedores extends javax.swing.JPanel {
             }
         });
         table1.setGridColor(new java.awt.Color(255, 255, 255));
-        table1.setSelectionBackground(new java.awt.Color(198, 177, 201));
         table1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table1);
 
