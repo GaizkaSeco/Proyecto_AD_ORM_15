@@ -4,8 +4,7 @@
  */
 package swing;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -233,7 +232,7 @@ public class PanelMenuGestionGlobal extends javax.swing.JPanel {
         resetColor(botonSumiPiezas, labelPieza);
         resetColor(botonRelacionar, labelPpp);
         
-        PanelGestionProveedores frame = new PanelGestionProveedores(content);
+        PanelEstadisticas frame = new PanelEstadisticas(content);
         frame.setSize(830,490);
         frame.setLocation(0,0);
         content.removeAll();

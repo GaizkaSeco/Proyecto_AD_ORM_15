@@ -71,9 +71,7 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
         );
         botonNuevoProyectoLayout.setVerticalGroup(
             botonNuevoProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonNuevoProyectoLayout.createSequentialGroup()
-                .addComponent(labelAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(labelAnadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         botonGestionProyectos.setBackground(new java.awt.Color(204, 204, 204));
@@ -110,11 +108,8 @@ public class PanelMenuProyectos extends javax.swing.JPanel {
         );
         panelMenuTopLayout.setVerticalGroup(
             panelMenuTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuTopLayout.createSequentialGroup()
-                .addGroup(panelMenuTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonGestionProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(botonGestionProyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, -1));

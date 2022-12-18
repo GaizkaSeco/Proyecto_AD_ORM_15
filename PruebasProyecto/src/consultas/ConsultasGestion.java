@@ -116,6 +116,13 @@ public class ConsultasGestion {
         return relacion;
     }
 
+    /*public GestionEntity piezaMasSuministrada() {
+        GestionEntity relacion = new GestionEntity();
+        Query q = session.createQuery("from GestionEntity where maxGestionEntity .piezasByCodpieza like (from PiezasEntity)");
+        relacion = (GestionEntity) q.list();
+        return relacion;
+    }*/
+
     public void cerrarConexion() {
         session.close();
     }
